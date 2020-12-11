@@ -1,0 +1,12 @@
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\bin\Debug\DTO.dll
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\bin\Debug\DTO.pdb
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\obj\Debug\DTO.dll
+D:\HHHH\XDPMPL\BanHang_Admin\DTO\obj\Debug\DTO.pdb
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\bin\Debug\DTO.dll
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\bin\Debug\DTO.pdb
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\obj\Debug\DTO.dll
+D:\HHHH\XDPMPL\BanHang\BanHang_Admin\DTO\obj\Debug\DTO.pdb

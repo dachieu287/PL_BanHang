@@ -195,9 +195,19 @@ namespace GUI
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ofdProductImage = new System.Windows.Forms.OpenFileDialog();
             this.ofdComboImage = new System.Windows.Forms.OpenFileDialog();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtBillSearchString = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dtpBillSearchFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpBillSearchToDate = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.nmrBillFromTotal = new System.Windows.Forms.NumericUpDown();
+            this.nmrBillToTotal = new System.Windows.Forms.NumericUpDown();
+            this.btnBillSearch = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tpSell.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -238,6 +248,8 @@ namespace GUI
             this.panel5.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillToTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -1799,11 +1811,22 @@ namespace GUI
             // 
             // panel19
             // 
+            this.panel19.Controls.Add(this.btnBillSearch);
+            this.panel19.Controls.Add(this.nmrBillToTotal);
+            this.panel19.Controls.Add(this.nmrBillFromTotal);
+            this.panel19.Controls.Add(this.label32);
+            this.panel19.Controls.Add(this.label31);
+            this.panel19.Controls.Add(this.label30);
+            this.panel19.Controls.Add(this.dtpBillSearchToDate);
+            this.panel19.Controls.Add(this.dtpBillSearchFromDate);
+            this.panel19.Controls.Add(this.label29);
+            this.panel19.Controls.Add(this.txtBillSearchString);
+            this.panel19.Controls.Add(this.label28);
             this.panel19.Controls.Add(this.lvBill);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel19.Location = new System.Drawing.Point(0, 0);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(474, 424);
+            this.panel19.Size = new System.Drawing.Size(424, 424);
             this.panel19.TabIndex = 0;
             // 
             // lvBill
@@ -1812,8 +1835,7 @@ namespace GUI
             this.columnHeader25,
             this.columnHeader26,
             this.columnHeader27,
-            this.columnHeader28,
-            this.columnHeader29});
+            this.columnHeader28});
             this.lvBill.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lvBill.FullRowSelect = true;
             listViewGroup1.Header = "ListViewGroup";
@@ -1836,7 +1858,7 @@ namespace GUI
             this.lvBill.Location = new System.Drawing.Point(0, 90);
             this.lvBill.MultiSelect = false;
             this.lvBill.Name = "lvBill";
-            this.lvBill.Size = new System.Drawing.Size(474, 334);
+            this.lvBill.Size = new System.Drawing.Size(424, 334);
             this.lvBill.TabIndex = 0;
             this.lvBill.UseCompatibleStateImageBehavior = false;
             this.lvBill.View = System.Windows.Forms.View.Details;
@@ -1849,7 +1871,7 @@ namespace GUI
             // columnHeader26
             // 
             this.columnHeader26.Text = "Tài khoản";
-            this.columnHeader26.Width = 100;
+            this.columnHeader26.Width = 150;
             // 
             // columnHeader27
             // 
@@ -1862,11 +1884,6 @@ namespace GUI
             this.columnHeader28.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader28.Width = 100;
             // 
-            // columnHeader29
-            // 
-            this.columnHeader29.Text = "Trạng thái";
-            this.columnHeader29.Width = 100;
-            // 
             // ofdProductImage
             // 
             this.ofdProductImage.Filter = "Image|*.jpg;*.jpeg;*.png";
@@ -1874,6 +1891,119 @@ namespace GUI
             // ofdComboImage
             // 
             this.ofdComboImage.Filter = "Image|*.jpg;*.jpeg;*.png";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(12, 7);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(52, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Tìm kiếm:";
+            // 
+            // txtBillSearchString
+            // 
+            this.txtBillSearchString.Location = new System.Drawing.Point(74, 4);
+            this.txtBillSearchString.Name = "txtBillSearchString";
+            this.txtBillSearchString.Size = new System.Drawing.Size(266, 20);
+            this.txtBillSearchString.TabIndex = 2;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(15, 37);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(49, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Từ ngày:";
+            // 
+            // dtpBillSearchFromDate
+            // 
+            this.dtpBillSearchFromDate.Checked = false;
+            this.dtpBillSearchFromDate.CustomFormat = "dd/MM/yyy";
+            this.dtpBillSearchFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBillSearchFromDate.Location = new System.Drawing.Point(74, 31);
+            this.dtpBillSearchFromDate.Name = "dtpBillSearchFromDate";
+            this.dtpBillSearchFromDate.ShowCheckBox = true;
+            this.dtpBillSearchFromDate.Size = new System.Drawing.Size(112, 20);
+            this.dtpBillSearchFromDate.TabIndex = 4;
+            this.dtpBillSearchFromDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // dtpBillSearchToDate
+            // 
+            this.dtpBillSearchToDate.Checked = false;
+            this.dtpBillSearchToDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpBillSearchToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBillSearchToDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtpBillSearchToDate.Location = new System.Drawing.Point(74, 57);
+            this.dtpBillSearchToDate.Name = "dtpBillSearchToDate";
+            this.dtpBillSearchToDate.ShowCheckBox = true;
+            this.dtpBillSearchToDate.Size = new System.Drawing.Size(112, 20);
+            this.dtpBillSearchToDate.TabIndex = 5;
+            this.dtpBillSearchToDate.Value = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(8, 64);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 13);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Đến ngày:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(199, 37);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(32, 13);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "Từ $:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(192, 64);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(39, 13);
+            this.label32.TabIndex = 8;
+            this.label32.Text = "Đến $:";
+            // 
+            // nmrBillFromTotal
+            // 
+            this.nmrBillFromTotal.Location = new System.Drawing.Point(230, 31);
+            this.nmrBillFromTotal.Name = "nmrBillFromTotal";
+            this.nmrBillFromTotal.Size = new System.Drawing.Size(110, 20);
+            this.nmrBillFromTotal.TabIndex = 9;
+            this.nmrBillFromTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nmrBillToTotal
+            // 
+            this.nmrBillToTotal.Location = new System.Drawing.Point(230, 57);
+            this.nmrBillToTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.nmrBillToTotal.Name = "nmrBillToTotal";
+            this.nmrBillToTotal.Size = new System.Drawing.Size(110, 20);
+            this.nmrBillToTotal.TabIndex = 9;
+            this.nmrBillToTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmrBillToTotal.Value = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // btnBillSearch
+            // 
+            this.btnBillSearch.Location = new System.Drawing.Point(346, 11);
+            this.btnBillSearch.Name = "btnBillSearch";
+            this.btnBillSearch.Size = new System.Drawing.Size(75, 57);
+            this.btnBillSearch.TabIndex = 10;
+            this.btnBillSearch.Text = "Lọc";
+            this.btnBillSearch.UseVisualStyleBackColor = true;
+            this.btnBillSearch.Click += new System.EventHandler(this.btnBillSearch_Click);
             // 
             // Manage
             // 
@@ -1936,6 +2066,9 @@ namespace GUI
             this.panel5.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillToTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2105,6 +2238,16 @@ namespace GUI
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.ColumnHeader columnHeader27;
         private System.Windows.Forms.ColumnHeader columnHeader28;
-        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.DateTimePicker dtpBillSearchFromDate;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtBillSearchString;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button btnBillSearch;
+        private System.Windows.Forms.NumericUpDown nmrBillToTotal;
+        private System.Windows.Forms.NumericUpDown nmrBillFromTotal;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.DateTimePicker dtpBillSearchToDate;
     }
 }

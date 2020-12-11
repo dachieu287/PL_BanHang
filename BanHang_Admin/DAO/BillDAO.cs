@@ -94,5 +94,60 @@ from Bill";
 
             return bills;
         }
+
+        public List<Bill> Search(string searchString, DateTime? fromDate, DateTime? toDate, decimal fromTotal, decimal toTotal)
+        {
+            List<Bill> bills = new List<Bill>();
+            SqlCommand command = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                Connection = connection,
+            };
+
+            string sql = @"
+select ID, AccountEmail, Datetime, Total, Status
+from Bill
+where (Total >= @fromTotal and Total <= @toTotal)";
+            command.Parameters.Add("@fromTotal", SqlDbType.Decimal).Value = fromTotal;
+            command.Parameters.Add("@toTotal", SqlDbType.Decimal).Value = toTotal;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sql += @"
+  and (ID = @id or AccountEmail like @email)";
+                int id = -1;
+                int.TryParse(searchString, out id);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = searchString;
+            }
+            if (fromDate != null)
+            {
+                sql += @"
+  and Datetime >= @fromDate";
+                command.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = (DateTime)fromDate;
+            }
+            if (toDate != null)
+            {
+                sql += @"
+  and Datetime <= @toDate";
+                command.Parameters.Add("@toDate", SqlDbType.DateTime).Value = (DateTime)toDate;
+            }
+            command.CommandText = sql;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Bill bill = new Bill
+                {
+                    ID = reader.GetInt32(0),
+                    Account = new Account { Email = reader.GetString(1) },
+                    Datetime = reader.GetDateTime(2),
+                    Total = reader.GetDecimal(3),
+                    Status = (BillStatus)reader.GetInt32(4)
+                };
+                bills.Add(bill);
+            }
+            reader.Close();
+
+            return bills;
+        }
     }
 }

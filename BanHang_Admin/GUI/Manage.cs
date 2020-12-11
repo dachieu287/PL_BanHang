@@ -104,6 +104,22 @@ namespace GUI
             }
         }
 
+        private void ShowBills(List<Bill> bills)
+        {
+            lvBill.Items.Clear();
+            foreach (Bill bill in bills)
+            {
+                ListViewItem item = new ListViewItem(bill.ID.ToString());
+                item.SubItems.Add(bill.Account.Email);
+                item.SubItems.Add(bill.Datetime.ToString("dd/MM/yyyy hh:mm:ss"));
+                item.SubItems.Add(bill.Total.ToString());
+                item.SubItems.Add(bill.Status.ToString());
+                item.Tag = bill;
+                item.Group = lvBill.Groups["lvgStore"];
+                lvBill.Items.Add(item);
+            }
+        }
+
         private void ShowAllStorage()
         {
             lvStorage.Items.Clear();
@@ -1283,6 +1299,18 @@ namespace GUI
             }
             sorter.SortColumn = e.Column;
             lvStorage.Sort();
+        }
+
+        private void btnBillSearch_Click(object sender, EventArgs e)
+        {
+            string searchString = txtBillSearchString.Text;
+            DateTime? fromDate = dtpBillSearchFromDate.Checked ? (DateTime?)dtpBillSearchFromDate.Value : null;
+            DateTime? toDate = dtpBillSearchToDate.Checked ? (DateTime?)dtpBillSearchToDate.Value : null;
+            decimal fromTotal = nmrBillFromTotal.Value;
+            decimal toTotal = nmrBillToTotal.Value;
+
+            List<Bill> bills = billBUS.Search(searchString, fromDate, toDate, fromTotal, toTotal);
+            ShowBills(bills);
         }
     }
 }

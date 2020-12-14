@@ -47,7 +47,6 @@
     <Compile Include="Catalog.cs" />
     <Compile Include="Combo.cs" />
     <Compile Include="ComboDetail.cs" />
-    <Compile Include="Price.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

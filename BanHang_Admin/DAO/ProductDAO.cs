@@ -13,7 +13,7 @@ namespace DAO
             List<Product> products = new List<Product>();
 
             string sql = 
-                @"select ID, Name, Description, Image, CatalogID, Quantity
+                @"select ID, Name, Description, Image, CatalogID, Quantity, Price
                   from Product";
             SqlCommand command = new SqlCommand
             {
@@ -31,7 +31,8 @@ namespace DAO
                     Description = reader.GetString(2),
                     Image = (byte[])reader[3],
                     Catalog = new Catalog { ID = reader.GetString(4) },
-                    Quantity = reader.GetInt32(5)
+                    Quantity = reader.GetInt32(5),
+                    Price = reader.GetDecimal(6)
                 };
 
                 products.Add(product);
@@ -43,19 +44,22 @@ namespace DAO
 
         public bool Add(Product product)
         {
+            string sql = @"
+insert into Product (ID, Name, Description, Image, CatalogID, Quantity, Price)
+values (@id, @name, @description, @image, @catalogid, @quantity, @price)";
             SqlCommand command = new SqlCommand
             {
                 CommandType = CommandType.Text,
                 Connection = connection,
+                CommandText = sql
             };
-            command.CommandText = 
-                @"insert into Product (ID, Name, Description, Image, CatalogID)
-                  values (@id, @name, @description, @image, @catalogid)";
             command.Parameters.Add("@id", SqlDbType.NVarChar).Value = product.ID;
             command.Parameters.Add("@name", SqlDbType.NVarChar).Value = product.Name;
             command.Parameters.Add("@description", SqlDbType.NText).Value = product.Description;
             command.Parameters.Add("@image", SqlDbType.VarBinary).Value = product.Image;
             command.Parameters.Add("@catalogid", SqlDbType.NVarChar).Value = product.Catalog.ID;
+            command.Parameters.Add("@quantity", SqlDbType.Int).Value = product.Quantity;
+            command.Parameters.Add("@price", SqlDbType.NVarChar).Value = product.Price;
 
             try
             {
@@ -70,20 +74,23 @@ namespace DAO
 
         public bool Edit(string id, Product product)
         {
+            string sql = @"
+update Product
+set ID = @id, Name = @name, Description = @description, Image = @image, CatalogID = @catalogid, Quantity = @quantity, Price = @price
+where ID = @oldid";
             SqlCommand command = new SqlCommand
             {
                 CommandType = CommandType.Text,
                 Connection = connection,
+                CommandText = sql,
             };
-            command.CommandText = 
-                @"update Product
-                  set ID = @id, Name = @name, Description = @description, Image = @image, CatalogID = @catalogid
-                  where ID = @oldid";
             command.Parameters.Add("@id", SqlDbType.NVarChar).Value = product.ID;
             command.Parameters.Add("@name", SqlDbType.NVarChar).Value = product.Name;
             command.Parameters.Add("@description", SqlDbType.NText).Value = product.Description;
             command.Parameters.Add("@image", SqlDbType.VarBinary).Value = product.Image;
             command.Parameters.Add("@catalogid", SqlDbType.NVarChar).Value = product.Catalog.ID;
+            command.Parameters.Add("@quantity", SqlDbType.NVarChar).Value = product.Quantity;
+            command.Parameters.Add("@price", SqlDbType.NVarChar).Value = product.Price;
             command.Parameters.Add("@oldid", SqlDbType.NVarChar).Value = id;
 
             try
@@ -129,22 +136,22 @@ namespace DAO
                 CommandType = CommandType.Text,
                 Connection = connection,
             };
-            string sql = 
-                @"select ID, Name, Description, Image, CatalogID, Quantity
-                from Product
-                where 1 = 1 ";
+            string sql = @"
+select ID, Name, Description, Image, CatalogID, Quantity, Price
+from Product
+where 1 = 1";
 
             if (!String.IsNullOrEmpty(searchCatalog))
             {
-                sql += "and CatalogID = @catalogID ";
+                sql += @"
+and CatalogID = @catalogID";
                 command.Parameters.Add("@catalogID", SqlDbType.NVarChar).Value = searchCatalog;
             }
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                sql += 
-                    @"and (ID = @id
-                      or Name like @name)";
+                sql += @"
+and (ID = @id or Name like @name)";
                 command.Parameters.Add("@id", SqlDbType.NVarChar).Value = searchString;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = "%" + searchString + "%";
             }
@@ -162,6 +169,7 @@ namespace DAO
                     Image = (byte[])reader[3],
                     Catalog = new Catalog { ID = reader.GetString(4) },
                     Quantity = reader.GetInt32(5),
+                    Price = reader.GetDecimal(6),
                 };
 
                 products.Add(product);
@@ -241,6 +249,31 @@ namespace DAO
             {
                 reader.Close();
             }
+        }
+
+        public string GetName(string id)
+        {
+            string sql = @"
+select Name
+from Product
+where ID = @id";
+            SqlCommand command = new SqlCommand
+            {
+                Connection = connection,
+                CommandType = CommandType.Text,
+                CommandText = sql
+            };
+            command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+
+            SqlDataReader reader = command.ExecuteReader();
+            string result = null;
+            if (reader.Read())
+            {
+                result = reader.GetString(0);
+            }
+            reader.Close();
+            
+            return result;
         }
     }
 }

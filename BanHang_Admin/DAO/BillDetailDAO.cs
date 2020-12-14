@@ -11,11 +11,9 @@ namespace DAO
         public BillDetail GetProductDetail(string id)
         {
             string sql = @"
-select pd.ID, pd.Name, pr.ID, pr.Price, pd.Quantity
-from Product pd, Price pr
-where pd.ID = pr.ProductID
-  and pd.ID = @id
-  and pr.ToDatetime is NULL";
+select ID, Name, Price
+from Product
+where ID = @id";
             SqlCommand command = new SqlCommand
             {
                 Connection = connection,
@@ -31,8 +29,7 @@ where pd.ID = pr.ProductID
                     BillDetail billDetail = new BillDetail
                     {
                         Product = new Product { ID = reader.GetString(0), Name = reader.GetString(1) },
-                        Price = new Price { ID = reader.GetInt32(2), Pricez = reader.GetDecimal(3) },
-                        Quantity = reader.GetInt32(4)
+                        Price = reader.GetDecimal(2)
                     };
                     return billDetail;
                 }
@@ -50,11 +47,9 @@ where pd.ID = pr.ProductID
         public BillDetail GetComboDetail(string id)
         {
             string sql = @"
-select cb.ID, cb.Name, pr.ID, pr.Price
-from Combo cb, Price pr
-where cb.ID = pr.ComboID
-  and cb.ID = @id
-  and pr.ToDatetime is NULL";
+select ID, Name, Price
+from Combo
+where cb.ID = @id";
             SqlCommand command = new SqlCommand
             {
                 Connection = connection,
@@ -70,7 +65,7 @@ where cb.ID = pr.ComboID
                     BillDetail billDetail = new BillDetail
                     {
                         Combo = new Combo { ID = reader.GetString(0), Name = reader.GetString(1)},
-                        Price = new Price { ID = reader.GetInt32(2), Pricez = reader.GetDecimal(3)}
+                        Price = reader.GetDecimal(2)
                     };
                     return billDetail;
                 }
@@ -85,5 +80,35 @@ where cb.ID = pr.ComboID
             }
         }
 
+        public List<BillDetail> GetBillDetails(int billID)
+        {
+            List<BillDetail> billDetails = new List<BillDetail>();
+            string sql = @"
+select ProductID, ComboID, Price, Quantity
+from BillDetail
+where BillID = @billid";
+            SqlCommand command = new SqlCommand
+            {
+                Connection = connection,
+                CommandType = CommandType.Text,
+                CommandText = sql,
+            };
+            command.Parameters.Add("@billid", SqlDbType.Int).Value = billID;
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                BillDetail billDetail = new BillDetail
+                {
+                    Product = reader.IsDBNull(0) ? null : new Product { ID = reader.GetString(0) },
+                    Combo = reader.IsDBNull(1) ? null : new Combo { ID = reader.GetString(1) },
+                    Price = reader.GetDecimal(2),
+                    Quantity = reader.GetInt32(3)
+                };
+                billDetails.Add(billDetail);
+            }
+            reader.Close();
+            return billDetails;
+        }
     }
 }

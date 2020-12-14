@@ -16,12 +16,13 @@ namespace DAO
                 Connection = connection,
             };
             string sql = @"
-insert into Bill (AccountEmail, Datetime, Total, Status)
-values (@accountemail, @datetime, @total, @status)
+insert into Bill (Name, Address, Phone, Total, Status)
+values (@name, @address, @phone, @total, @status)
 select SCOPE_IDENTITY()";
             command.CommandText = sql;
-            command.Parameters.Add("@accountemail", SqlDbType.NVarChar).Value = bill.Account.Email;
-            command.Parameters.Add("@datetime", SqlDbType.DateTime).Value = bill.Datetime;
+            command.Parameters.Add("@name", SqlDbType.NVarChar).Value = bill.Name;
+            command.Parameters.Add("@address", SqlDbType.NVarChar).Value = bill.Address;
+            command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = bill.Phone;
             command.Parameters.Add("@total", SqlDbType.Decimal).Value = bill.Total;
             command.Parameters.Add("@status", SqlDbType.Int).Value = (int)bill.Status;
             SqlDataReader reader =  command.ExecuteReader();
@@ -34,14 +35,14 @@ select SCOPE_IDENTITY()";
             foreach (BillDetail billDetail in bill.BillDetails)
             {
                 sql = @"
-insert into BillDetail (BillID, ProductID, ComboID, PriceID, Quantity)
-values (@billid, @productid, @comboid, @priceid, @quantity)";
+insert into BillDetail (BillID, ProductID, ComboID, Price, Quantity)
+values (@billid, @productid, @comboid, @price, @quantity)";
                 command.CommandText = sql;
                 command.Parameters.Clear();
                 command.Parameters.Add("@billid", SqlDbType.Int).Value = bill.ID;
                 command.Parameters.Add("@productid", SqlDbType.NVarChar).Value = billDetail.Product != null ? billDetail.Product.ID : (object)DBNull.Value;
                 command.Parameters.Add("@comboid", SqlDbType.NVarChar).Value = billDetail.Combo != null ? billDetail.Combo.ID : (object)DBNull.Value;
-                command.Parameters.Add("@priceid", SqlDbType.Int).Value = billDetail.Price.ID;
+                command.Parameters.Add("@price", SqlDbType.Int).Value = billDetail.Price;
                 command.Parameters.Add("@quantity", SqlDbType.Int).Value = billDetail.Quantity;
                 command.ExecuteNonQuery();
 
@@ -68,7 +69,7 @@ values (@billid, @productid, @comboid, @priceid, @quantity)";
             List<Bill> bills = new List<Bill>();
 
             string sql = @"
-select ID, AccountEmail, Datetime, Total, Status
+select ID, Name, Address, Phone, Datetime, Total, Status
 from Bill";
             SqlCommand command = new SqlCommand
             {
@@ -83,10 +84,12 @@ from Bill";
                 Bill bill = new Bill
                 {
                     ID = reader.GetInt32(0),
-                    Account = new Account { Email = reader.GetString(1) },
-                    Datetime = reader.GetDateTime(2),
-                    Total = reader.GetDecimal(3),
-                    Status = (BillStatus)reader.GetInt32(4)
+                    Name = reader.GetString(1),
+                    Address = reader.GetString(2),
+                    Phone = reader.GetString(3),
+                    Datetime = reader.GetDateTime(4),
+                    Total = reader.GetDecimal(5),
+                    Status = (BillStatus)reader.GetInt32(6),
                 };
                 bills.Add(bill);
             }
@@ -105,7 +108,7 @@ from Bill";
             };
 
             string sql = @"
-select ID, AccountEmail, Datetime, Total, Status
+select ID, Name, Address, Phone, Datetime, Total, Status
 from Bill
 where (Total >= @fromTotal and Total <= @toTotal)";
             command.Parameters.Add("@fromTotal", SqlDbType.Decimal).Value = fromTotal;
@@ -113,11 +116,11 @@ where (Total >= @fromTotal and Total <= @toTotal)";
             if (!String.IsNullOrEmpty(searchString))
             {
                 sql += @"
-  and (ID = @id or AccountEmail like @email)";
-                int id = -1;
+  and (ID = @id or Name like @name or Username like @name)";
+                int id;
                 int.TryParse(searchString, out id);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = searchString;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = "%" + searchString + "%";
             }
             if (fromDate != null)
             {
@@ -138,16 +141,41 @@ where (Total >= @fromTotal and Total <= @toTotal)";
                 Bill bill = new Bill
                 {
                     ID = reader.GetInt32(0),
-                    Account = new Account { Email = reader.GetString(1) },
-                    Datetime = reader.GetDateTime(2),
-                    Total = reader.GetDecimal(3),
-                    Status = (BillStatus)reader.GetInt32(4)
+                    Name = reader.GetString(1),
+                    Address = reader.GetString(2),
+                    Phone = reader.GetString(3),
+                    Datetime = reader.GetDateTime(4),
+                    Total = reader.GetDecimal(5),
+                    Status = (BillStatus)reader.GetInt32(6),
                 };
                 bills.Add(bill);
             }
             reader.Close();
 
             return bills;
+        }
+
+        public bool Edit(int id, Bill bill)
+        {
+            string sql = @"
+update Bill
+set Name = @name, Address = @address, Phone = @phone, Status = @status
+where ID = @id";
+            SqlCommand command = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                Connection = connection,
+                CommandText = sql,
+            };
+            command.Parameters.Add("@name", SqlDbType.NVarChar).Value = bill.Name;
+            command.Parameters.Add("@address", SqlDbType.NVarChar).Value = bill.Address;
+            command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = bill.Phone;
+            command.Parameters.Add("@status", SqlDbType.Int).Value = (int)bill.Status;
+            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+            command.ExecuteNonQuery();
+
+            return true;
         }
     }
 }

@@ -37,5 +37,10 @@ namespace BUS
             }
             return result;
         }
+
+        public List<BillDetail> GetBillDetails(int billID)
+        {
+            return dao.GetBillDetails(billID);
+        }
     }
 }

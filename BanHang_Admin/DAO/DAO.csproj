@@ -48,7 +48,6 @@
     <Compile Include="ComboDetailDAO.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="AccountDAO.cs" />
-    <Compile Include="PriceDAO.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

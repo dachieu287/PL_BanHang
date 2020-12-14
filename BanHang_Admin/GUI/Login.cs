@@ -21,14 +21,14 @@ namespace GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text;
+            string username = txtUsername.Text;
             string password = txtPassword.Text;
 
             AccountBUS bus = new AccountBUS();
-            LoginStatus status = bus.Login(email, password);
+            LoginStatus status = bus.Login(username, password);
             switch (status)
             {
-                case LoginStatus.WRONG_EMAIL:
+                case LoginStatus.WRONG_USERNAME:
                     MessageBox.Show("Email không tồn tại");
                     return;
                 case LoginStatus.WRONG_PASSWORD:

@@ -29,11 +29,11 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Chưa xử lý", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Đang xử lý", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Đang giao", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Đã Giao", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Đã hủy", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tpSell = new System.Windows.Forms.TabPage();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -58,6 +58,10 @@ namespace GUI
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpProduct = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.nmrProductQuantity = new System.Windows.Forms.NumericUpDown();
+            this.nmrProductPrice = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.picProductImage = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cboProductCatalog = new System.Windows.Forms.ComboBox();
@@ -77,6 +81,8 @@ namespace GUI
             this.lvProduct = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -98,6 +104,12 @@ namespace GUI
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nmrComboPrice = new System.Windows.Forms.NumericUpDown();
+            this.nmrComboDiscount = new System.Windows.Forms.NumericUpDown();
+            this.nmrComboPrevPrice = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.picComboImage = new System.Windows.Forms.PictureBox();
             this.btnComboEdit = new System.Windows.Forms.Button();
@@ -115,65 +127,11 @@ namespace GUI
             this.lvCombo = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnComboSearch = new System.Windows.Forms.Button();
             this.txtComboSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tpPrice = new System.Windows.Forms.TabPage();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnPriceUpdate = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.nmrPriceDiscount = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.nmrPricePrice = new System.Windows.Forms.NumericUpDown();
-            this.nmrPricePrevPrice = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.chkPricePromotion = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtPriceOptionID = new System.Windows.Forms.TextBox();
-            this.radPriceUpdateCombo = new System.Windows.Forms.RadioButton();
-            this.radPriceUpdateProduct = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lvPriceHistory = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.lvPrice = new System.Windows.Forms.ListView();
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btnPriceSearch = new System.Windows.Forms.Button();
-            this.cboPriceSearchCatalog = new System.Windows.Forms.ComboBox();
-            this.txtPriceSearchString = new System.Windows.Forms.TextBox();
-            this.radPriceCombo = new System.Windows.Forms.RadioButton();
-            this.radPriceProduct = new System.Windows.Forms.RadioButton();
-            this.tpStorage = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnStorageExport = new System.Windows.Forms.Button();
-            this.btnStorageImport = new System.Windows.Forms.Button();
-            this.nmrStorageQuantity = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtStorageID = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.lvStorage = new System.Windows.Forms.ListView();
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnStorageSearch = new System.Windows.Forms.Button();
-            this.cboStorageSearchCatalog = new System.Windows.Forms.ComboBox();
-            this.txtStorageSearchString = new System.Windows.Forms.TextBox();
             this.tpCatalog = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCatalogEdit = new System.Windows.Forms.Button();
@@ -189,7 +147,24 @@ namespace GUI
             this.clhdCatalogID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhdCatalogName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpBill = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lvBillDetail = new System.Windows.Forms.ListView();
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel19 = new System.Windows.Forms.Panel();
+            this.btnBillSearch = new System.Windows.Forms.Button();
+            this.nmrBillToTotal = new System.Windows.Forms.NumericUpDown();
+            this.nmrBillFromTotal = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dtpBillSearchToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpBillSearchFromDate = new System.Windows.Forms.DateTimePicker();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtBillSearchString = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.lvBill = new System.Windows.Forms.ListView();
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -197,17 +172,25 @@ namespace GUI
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ofdProductImage = new System.Windows.Forms.OpenFileDialog();
             this.ofdComboImage = new System.Windows.Forms.OpenFileDialog();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtBillSearchString = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.dtpBillSearchFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpBillSearchToDate = new System.Windows.Forms.DateTimePicker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.nmrBillFromTotal = new System.Windows.Forms.NumericUpDown();
-            this.nmrBillToTotal = new System.Windows.Forms.NumericUpDown();
-            this.btnBillSearch = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.radBillUnprocessed = new System.Windows.Forms.RadioButton();
+            this.radBillProccessing = new System.Windows.Forms.RadioButton();
+            this.radBillShipping = new System.Windows.Forms.RadioButton();
+            this.radBillDone = new System.Windows.Forms.RadioButton();
+            this.radBillCancel = new System.Windows.Forms.RadioButton();
+            this.btnBillStatus = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtSellName = new System.Windows.Forms.TextBox();
+            this.txtSellAddress = new System.Windows.Forms.TextBox();
+            this.txtSellPhone = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtBillPhone = new System.Windows.Forms.TextBox();
+            this.txtBillAddress = new System.Windows.Forms.TextBox();
+            this.txtBillName = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tpSell.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -215,6 +198,8 @@ namespace GUI
             this.panel17.SuspendLayout();
             this.tpProduct.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrProductQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrProductPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -224,32 +209,21 @@ namespace GUI
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrComboDetailQuantity)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboPrevPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picComboImage)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.tpPrice.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPriceDiscount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPricePrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPricePrevPrice)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.tpStorage.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrStorageQuantity)).BeginInit();
-            this.panel14.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel15.SuspendLayout();
             this.tpCatalog.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tpBill.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrBillToTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -257,8 +231,6 @@ namespace GUI
             this.tabMain.Controls.Add(this.tpSell);
             this.tabMain.Controls.Add(this.tpProduct);
             this.tabMain.Controls.Add(this.tpCombo);
-            this.tabMain.Controls.Add(this.tpPrice);
-            this.tabMain.Controls.Add(this.tpStorage);
             this.tabMain.Controls.Add(this.tpCatalog);
             this.tabMain.Controls.Add(this.tpBill);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -279,7 +251,7 @@ namespace GUI
             this.tpSell.Padding = new System.Windows.Forms.Padding(3);
             this.tpSell.Size = new System.Drawing.Size(792, 424);
             this.tpSell.TabIndex = 0;
-            this.tpSell.Text = "Bán hàng";
+            this.tpSell.Text = "Báo giá";
             this.tpSell.UseVisualStyleBackColor = true;
             // 
             // panel18
@@ -396,6 +368,12 @@ namespace GUI
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.txtSellPhone);
+            this.panel17.Controls.Add(this.txtSellAddress);
+            this.panel17.Controls.Add(this.txtSellName);
+            this.panel17.Controls.Add(this.label18);
+            this.panel17.Controls.Add(this.label17);
+            this.panel17.Controls.Add(this.label14);
             this.panel17.Controls.Add(this.btnSellPay);
             this.panel17.Controls.Add(this.txtSellTotal);
             this.panel17.Controls.Add(this.label27);
@@ -408,18 +386,18 @@ namespace GUI
             // 
             // btnSellPay
             // 
-            this.btnSellPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSellPay.Location = new System.Drawing.Point(137, 334);
+            this.btnSellPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSellPay.Location = new System.Drawing.Point(123, 347);
             this.btnSellPay.Name = "btnSellPay";
-            this.btnSellPay.Size = new System.Drawing.Size(272, 58);
+            this.btnSellPay.Size = new System.Drawing.Size(272, 42);
             this.btnSellPay.TabIndex = 3;
-            this.btnSellPay.Text = "Thanh toán";
+            this.btnSellPay.Text = "Lưu";
             this.btnSellPay.UseVisualStyleBackColor = true;
             this.btnSellPay.Click += new System.EventHandler(this.btnSellPay_Click);
             // 
             // txtSellTotal
             // 
-            this.txtSellTotal.Location = new System.Drawing.Point(415, 290);
+            this.txtSellTotal.Location = new System.Drawing.Point(415, 202);
             this.txtSellTotal.Name = "txtSellTotal";
             this.txtSellTotal.ReadOnly = true;
             this.txtSellTotal.Size = new System.Drawing.Size(95, 20);
@@ -430,7 +408,7 @@ namespace GUI
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(347, 293);
+            this.label27.Location = new System.Drawing.Point(347, 205);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 13);
             this.label27.TabIndex = 1;
@@ -450,7 +428,7 @@ namespace GUI
             this.lvSell.Location = new System.Drawing.Point(0, 0);
             this.lvSell.MultiSelect = false;
             this.lvSell.Name = "lvSell";
-            this.lvSell.Size = new System.Drawing.Size(516, 284);
+            this.lvSell.Size = new System.Drawing.Size(516, 192);
             this.lvSell.TabIndex = 0;
             this.lvSell.UseCompatibleStateImageBehavior = false;
             this.lvSell.View = System.Windows.Forms.View.Details;
@@ -496,6 +474,10 @@ namespace GUI
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.nmrProductQuantity);
+            this.panel2.Controls.Add(this.nmrProductPrice);
+            this.panel2.Controls.Add(this.label34);
+            this.panel2.Controls.Add(this.label33);
             this.panel2.Controls.Add(this.picProductImage);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.cboProductCatalog);
@@ -516,10 +498,55 @@ namespace GUI
             this.panel2.Size = new System.Drawing.Size(360, 418);
             this.panel2.TabIndex = 0;
             // 
+            // nmrProductQuantity
+            // 
+            this.nmrProductQuantity.Location = new System.Drawing.Point(87, 121);
+            this.nmrProductQuantity.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nmrProductQuantity.Name = "nmrProductQuantity";
+            this.nmrProductQuantity.Size = new System.Drawing.Size(268, 20);
+            this.nmrProductQuantity.TabIndex = 18;
+            this.nmrProductQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nmrProductPrice
+            // 
+            this.nmrProductPrice.Location = new System.Drawing.Point(87, 95);
+            this.nmrProductPrice.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nmrProductPrice.Name = "nmrProductPrice";
+            this.nmrProductPrice.Size = new System.Drawing.Size(268, 20);
+            this.nmrProductPrice.TabIndex = 17;
+            this.nmrProductPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(32, 123);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(52, 13);
+            this.label34.TabIndex = 16;
+            this.label34.Text = "Số lượng:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(37, 97);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(47, 13);
+            this.label33.TabIndex = 16;
+            this.label33.Text = "Đơn giá:";
+            // 
             // picProductImage
             // 
+            this.picProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picProductImage.Image = global::GUI.Properties.Resources.upload;
-            this.picProductImage.Location = new System.Drawing.Point(142, 168);
+            this.picProductImage.Location = new System.Drawing.Point(141, 195);
             this.picProductImage.Name = "picProductImage";
             this.picProductImage.Size = new System.Drawing.Size(150, 150);
             this.picProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -530,7 +557,7 @@ namespace GUI
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(31, 185);
+            this.label15.Location = new System.Drawing.Point(31, 260);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 13);
             this.label15.TabIndex = 14;
@@ -586,9 +613,9 @@ namespace GUI
             // 
             // txtProductDescription
             // 
-            this.txtProductDescription.Location = new System.Drawing.Point(87, 95);
+            this.txtProductDescription.Location = new System.Drawing.Point(87, 147);
             this.txtProductDescription.Name = "txtProductDescription";
-            this.txtProductDescription.Size = new System.Drawing.Size(268, 67);
+            this.txtProductDescription.Size = new System.Drawing.Size(268, 42);
             this.txtProductDescription.TabIndex = 9;
             this.txtProductDescription.Text = "";
             // 
@@ -602,7 +629,7 @@ namespace GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 98);
+            this.label2.Location = new System.Drawing.Point(46, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 8;
@@ -666,6 +693,8 @@ namespace GUI
             this.lvProduct.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
+            this.columnHeader33,
+            this.columnHeader34,
             this.columnHeader4});
             this.lvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvProduct.FullRowSelect = true;
@@ -684,13 +713,22 @@ namespace GUI
             // 
             this.columnHeader1.Tag = "ProductID";
             this.columnHeader1.Text = "Mã";
-            this.columnHeader1.Width = 70;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Tag = "ProductName";
             this.columnHeader2.Text = "Tên";
-            this.columnHeader2.Width = 260;
+            this.columnHeader2.Width = 160;
+            // 
+            // columnHeader33
+            // 
+            this.columnHeader33.Text = "Đơn giá";
+            this.columnHeader33.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // columnHeader34
+            // 
+            this.columnHeader34.Text = "Số lượng";
+            this.columnHeader34.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader4
             // 
@@ -892,6 +930,12 @@ namespace GUI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nmrComboPrice);
+            this.groupBox2.Controls.Add(this.nmrComboDiscount);
+            this.groupBox2.Controls.Add(this.nmrComboPrevPrice);
+            this.groupBox2.Controls.Add(this.label37);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.label35);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.picComboImage);
             this.groupBox2.Controls.Add(this.btnComboEdit);
@@ -912,6 +956,67 @@ namespace GUI
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin cơ bản:";
             // 
+            // nmrComboPrice
+            // 
+            this.nmrComboPrice.Location = new System.Drawing.Point(281, 199);
+            this.nmrComboPrice.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nmrComboPrice.Name = "nmrComboPrice";
+            this.nmrComboPrice.Size = new System.Drawing.Size(97, 20);
+            this.nmrComboPrice.TabIndex = 21;
+            this.nmrComboPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nmrComboDiscount
+            // 
+            this.nmrComboDiscount.Location = new System.Drawing.Point(281, 173);
+            this.nmrComboDiscount.Name = "nmrComboDiscount";
+            this.nmrComboDiscount.Size = new System.Drawing.Size(97, 20);
+            this.nmrComboDiscount.TabIndex = 21;
+            this.nmrComboDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nmrComboPrevPrice
+            // 
+            this.nmrComboPrevPrice.Location = new System.Drawing.Point(281, 147);
+            this.nmrComboPrevPrice.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nmrComboPrevPrice.Name = "nmrComboPrevPrice";
+            this.nmrComboPrevPrice.Size = new System.Drawing.Size(97, 20);
+            this.nmrComboPrevPrice.TabIndex = 21;
+            this.nmrComboPrevPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(229, 201);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(50, 13);
+            this.label37.TabIndex = 20;
+            this.label37.Text = "Giá thực:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(197, 175);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(82, 13);
+            this.label36.TabIndex = 19;
+            this.label36.Text = "Khuyến mãi (%):";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(201, 149);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(78, 13);
+            this.label35.TabIndex = 18;
+            this.label35.Text = "Giá trước giảm:";
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -923,8 +1028,9 @@ namespace GUI
             // 
             // picComboImage
             // 
+            this.picComboImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picComboImage.Image = global::GUI.Properties.Resources.upload;
-            this.picComboImage.Location = new System.Drawing.Point(134, 117);
+            this.picComboImage.Location = new System.Drawing.Point(68, 117);
             this.picComboImage.Name = "picComboImage";
             this.picComboImage.Size = new System.Drawing.Size(125, 125);
             this.picComboImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1044,7 +1150,8 @@ namespace GUI
             // 
             this.lvCombo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader35});
             this.lvCombo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvCombo.FullRowSelect = true;
             this.lvCombo.HideSelection = false;
@@ -1068,7 +1175,13 @@ namespace GUI
             // 
             this.columnHeader7.Tag = "ComboName";
             this.columnHeader7.Text = "Tên";
-            this.columnHeader7.Width = 300;
+            this.columnHeader7.Width = 200;
+            // 
+            // columnHeader35
+            // 
+            this.columnHeader35.Text = "Giá";
+            this.columnHeader35.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader35.Width = 100;
             // 
             // panel9
             // 
@@ -1106,560 +1219,6 @@ namespace GUI
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Tìm kiếm:";
-            // 
-            // tpPrice
-            // 
-            this.tpPrice.Controls.Add(this.panel12);
-            this.tpPrice.Controls.Add(this.panel11);
-            this.tpPrice.Location = new System.Drawing.Point(4, 22);
-            this.tpPrice.Name = "tpPrice";
-            this.tpPrice.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPrice.Size = new System.Drawing.Size(792, 424);
-            this.tpPrice.TabIndex = 5;
-            this.tpPrice.Text = "Giá";
-            this.tpPrice.UseVisualStyleBackColor = true;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.groupBox4);
-            this.panel12.Controls.Add(this.groupBox3);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(328, 3);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(461, 418);
-            this.panel12.TabIndex = 1;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.btnPriceUpdate);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.nmrPriceDiscount);
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.nmrPricePrice);
-            this.groupBox4.Controls.Add(this.nmrPricePrevPrice);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.chkPricePromotion);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.txtPriceOptionID);
-            this.groupBox4.Controls.Add(this.radPriceUpdateCombo);
-            this.groupBox4.Controls.Add(this.radPriceUpdateProduct);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(0, 194);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(461, 224);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Cập nhật:";
-            // 
-            // btnPriceUpdate
-            // 
-            this.btnPriceUpdate.Location = new System.Drawing.Point(152, 170);
-            this.btnPriceUpdate.Name = "btnPriceUpdate";
-            this.btnPriceUpdate.Size = new System.Drawing.Size(93, 41);
-            this.btnPriceUpdate.TabIndex = 11;
-            this.btnPriceUpdate.Text = "Cập nhật";
-            this.btnPriceUpdate.UseVisualStyleBackColor = true;
-            this.btnPriceUpdate.Click += new System.EventHandler(this.btnPriceUpdate_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(74, 146);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(50, 13);
-            this.label20.TabIndex = 10;
-            this.label20.Text = "Giá thực:";
-            // 
-            // nmrPriceDiscount
-            // 
-            this.nmrPriceDiscount.Enabled = false;
-            this.nmrPriceDiscount.Location = new System.Drawing.Point(130, 118);
-            this.nmrPriceDiscount.Name = "nmrPriceDiscount";
-            this.nmrPriceDiscount.Size = new System.Drawing.Size(156, 20);
-            this.nmrPriceDiscount.TabIndex = 9;
-            this.nmrPriceDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(45, 120);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(79, 13);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "Khuyến mãi (%)";
-            // 
-            // nmrPricePrice
-            // 
-            this.nmrPricePrice.Location = new System.Drawing.Point(130, 144);
-            this.nmrPricePrice.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.nmrPricePrice.Name = "nmrPricePrice";
-            this.nmrPricePrice.Size = new System.Drawing.Size(156, 20);
-            this.nmrPricePrice.TabIndex = 7;
-            this.nmrPricePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // nmrPricePrevPrice
-            // 
-            this.nmrPricePrevPrice.Enabled = false;
-            this.nmrPricePrevPrice.Location = new System.Drawing.Point(130, 92);
-            this.nmrPricePrevPrice.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.nmrPricePrevPrice.Name = "nmrPricePrevPrice";
-            this.nmrPricePrevPrice.Size = new System.Drawing.Size(156, 20);
-            this.nmrPricePrevPrice.TabIndex = 7;
-            this.nmrPricePrevPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(46, 94);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(78, 13);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Giá trước giảm:";
-            // 
-            // chkPricePromotion
-            // 
-            this.chkPricePromotion.AutoSize = true;
-            this.chkPricePromotion.Location = new System.Drawing.Point(130, 72);
-            this.chkPricePromotion.Name = "chkPricePromotion";
-            this.chkPricePromotion.Size = new System.Drawing.Size(81, 17);
-            this.chkPricePromotion.TabIndex = 5;
-            this.chkPricePromotion.Text = "Khuyến mãi";
-            this.chkPricePromotion.UseVisualStyleBackColor = true;
-            this.chkPricePromotion.CheckedChanged += new System.EventHandler(this.chkPromotion_CheckedChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(99, 45);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(25, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Mã:";
-            // 
-            // txtPriceOptionID
-            // 
-            this.txtPriceOptionID.Location = new System.Drawing.Point(130, 42);
-            this.txtPriceOptionID.Name = "txtPriceOptionID";
-            this.txtPriceOptionID.Size = new System.Drawing.Size(156, 20);
-            this.txtPriceOptionID.TabIndex = 2;
-            // 
-            // radPriceUpdateCombo
-            // 
-            this.radPriceUpdateCombo.AutoSize = true;
-            this.radPriceUpdateCombo.Location = new System.Drawing.Point(228, 19);
-            this.radPriceUpdateCombo.Name = "radPriceUpdateCombo";
-            this.radPriceUpdateCombo.Size = new System.Drawing.Size(58, 17);
-            this.radPriceUpdateCombo.TabIndex = 1;
-            this.radPriceUpdateCombo.Text = "Combo";
-            this.radPriceUpdateCombo.UseVisualStyleBackColor = true;
-            // 
-            // radPriceUpdateProduct
-            // 
-            this.radPriceUpdateProduct.AutoSize = true;
-            this.radPriceUpdateProduct.Checked = true;
-            this.radPriceUpdateProduct.Location = new System.Drawing.Point(130, 19);
-            this.radPriceUpdateProduct.Name = "radPriceUpdateProduct";
-            this.radPriceUpdateProduct.Size = new System.Drawing.Size(73, 17);
-            this.radPriceUpdateProduct.TabIndex = 0;
-            this.radPriceUpdateProduct.TabStop = true;
-            this.radPriceUpdateProduct.Text = "Sản phẩm";
-            this.radPriceUpdateProduct.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lvPriceHistory);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(461, 194);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Lịch sử:";
-            // 
-            // lvPriceHistory
-            // 
-            this.lvPriceHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader14,
-            this.columnHeader15,
-            this.columnHeader16});
-            this.lvPriceHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPriceHistory.FullRowSelect = true;
-            this.lvPriceHistory.HideSelection = false;
-            this.lvPriceHistory.Location = new System.Drawing.Point(3, 16);
-            this.lvPriceHistory.MultiSelect = false;
-            this.lvPriceHistory.Name = "lvPriceHistory";
-            this.lvPriceHistory.Size = new System.Drawing.Size(455, 175);
-            this.lvPriceHistory.TabIndex = 0;
-            this.lvPriceHistory.UseCompatibleStateImageBehavior = false;
-            this.lvPriceHistory.View = System.Windows.Forms.View.Details;
-            this.lvPriceHistory.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvPriceHistory_ColumnClick);
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Từ ngày";
-            this.columnHeader5.Width = 120;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Đến ngày";
-            this.columnHeader6.Width = 120;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Giá trước giảm";
-            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader14.Width = 80;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "KM (%) ";
-            this.columnHeader15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader15.Width = 50;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Giá thực";
-            this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader16.Width = 80;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.lvPrice);
-            this.panel11.Controls.Add(this.panel13);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(3, 3);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(325, 418);
-            this.panel11.TabIndex = 0;
-            // 
-            // lvPrice
-            // 
-            this.lvPrice.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13});
-            this.lvPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPrice.FullRowSelect = true;
-            this.lvPrice.HideSelection = false;
-            this.lvPrice.Location = new System.Drawing.Point(0, 98);
-            this.lvPrice.MultiSelect = false;
-            this.lvPrice.Name = "lvPrice";
-            this.lvPrice.Size = new System.Drawing.Size(325, 320);
-            this.lvPrice.TabIndex = 1;
-            this.lvPrice.UseCompatibleStateImageBehavior = false;
-            this.lvPrice.View = System.Windows.Forms.View.Details;
-            this.lvPrice.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvPrice_ColumnClick);
-            this.lvPrice.SelectedIndexChanged += new System.EventHandler(this.lvPrice_SelectedIndexChanged);
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Mã";
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Tên";
-            this.columnHeader12.Width = 160;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Giá";
-            this.columnHeader13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader13.Width = 100;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.label13);
-            this.panel13.Controls.Add(this.label14);
-            this.panel13.Controls.Add(this.btnPriceSearch);
-            this.panel13.Controls.Add(this.cboPriceSearchCatalog);
-            this.panel13.Controls.Add(this.txtPriceSearchString);
-            this.panel13.Controls.Add(this.radPriceCombo);
-            this.panel13.Controls.Add(this.radPriceProduct);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(0, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(325, 98);
-            this.panel13.TabIndex = 0;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 64);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Danh mục:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 38);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Tìm kiếm:";
-            // 
-            // btnPriceSearch
-            // 
-            this.btnPriceSearch.Location = new System.Drawing.Point(244, 36);
-            this.btnPriceSearch.Name = "btnPriceSearch";
-            this.btnPriceSearch.Size = new System.Drawing.Size(75, 46);
-            this.btnPriceSearch.TabIndex = 9;
-            this.btnPriceSearch.Text = "Lọc";
-            this.btnPriceSearch.UseVisualStyleBackColor = true;
-            this.btnPriceSearch.Click += new System.EventHandler(this.btnPriceSearch_Click);
-            // 
-            // cboPriceSearchCatalog
-            // 
-            this.cboPriceSearchCatalog.FormattingEnabled = true;
-            this.cboPriceSearchCatalog.Location = new System.Drawing.Point(71, 61);
-            this.cboPriceSearchCatalog.Name = "cboPriceSearchCatalog";
-            this.cboPriceSearchCatalog.Size = new System.Drawing.Size(156, 21);
-            this.cboPriceSearchCatalog.TabIndex = 8;
-            // 
-            // txtPriceSearchString
-            // 
-            this.txtPriceSearchString.Location = new System.Drawing.Point(71, 35);
-            this.txtPriceSearchString.Name = "txtPriceSearchString";
-            this.txtPriceSearchString.Size = new System.Drawing.Size(156, 20);
-            this.txtPriceSearchString.TabIndex = 6;
-            // 
-            // radPriceCombo
-            // 
-            this.radPriceCombo.AutoSize = true;
-            this.radPriceCombo.Location = new System.Drawing.Point(169, 12);
-            this.radPriceCombo.Name = "radPriceCombo";
-            this.radPriceCombo.Size = new System.Drawing.Size(58, 17);
-            this.radPriceCombo.TabIndex = 1;
-            this.radPriceCombo.Text = "Combo";
-            this.radPriceCombo.UseVisualStyleBackColor = true;
-            // 
-            // radPriceProduct
-            // 
-            this.radPriceProduct.AutoSize = true;
-            this.radPriceProduct.Checked = true;
-            this.radPriceProduct.Location = new System.Drawing.Point(71, 12);
-            this.radPriceProduct.Name = "radPriceProduct";
-            this.radPriceProduct.Size = new System.Drawing.Size(73, 17);
-            this.radPriceProduct.TabIndex = 0;
-            this.radPriceProduct.TabStop = true;
-            this.radPriceProduct.Text = "Sản phẩm";
-            this.radPriceProduct.UseVisualStyleBackColor = true;
-            this.radPriceProduct.CheckedChanged += new System.EventHandler(this.radPriceProduct_CheckedChanged);
-            // 
-            // tpStorage
-            // 
-            this.tpStorage.Controls.Add(this.groupBox5);
-            this.tpStorage.Controls.Add(this.panel14);
-            this.tpStorage.Location = new System.Drawing.Point(4, 22);
-            this.tpStorage.Name = "tpStorage";
-            this.tpStorage.Size = new System.Drawing.Size(792, 424);
-            this.tpStorage.TabIndex = 6;
-            this.tpStorage.Text = "Kho hàng";
-            this.tpStorage.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnStorageExport);
-            this.groupBox5.Controls.Add(this.btnStorageImport);
-            this.groupBox5.Controls.Add(this.nmrStorageQuantity);
-            this.groupBox5.Controls.Add(this.label24);
-            this.groupBox5.Controls.Add(this.txtStorageID);
-            this.groupBox5.Controls.Add(this.label23);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(417, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(375, 424);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Nhập/Xuất hàng:";
-            // 
-            // btnStorageExport
-            // 
-            this.btnStorageExport.Location = new System.Drawing.Point(207, 149);
-            this.btnStorageExport.Name = "btnStorageExport";
-            this.btnStorageExport.Size = new System.Drawing.Size(75, 35);
-            this.btnStorageExport.TabIndex = 5;
-            this.btnStorageExport.Text = "Xuất";
-            this.btnStorageExport.UseVisualStyleBackColor = true;
-            this.btnStorageExport.Click += new System.EventHandler(this.btnStorageExport_Click);
-            // 
-            // btnStorageImport
-            // 
-            this.btnStorageImport.Location = new System.Drawing.Point(111, 149);
-            this.btnStorageImport.Name = "btnStorageImport";
-            this.btnStorageImport.Size = new System.Drawing.Size(75, 35);
-            this.btnStorageImport.TabIndex = 4;
-            this.btnStorageImport.Text = "Nhập";
-            this.btnStorageImport.UseVisualStyleBackColor = true;
-            this.btnStorageImport.Click += new System.EventHandler(this.btnStorageImport_Click);
-            // 
-            // nmrStorageQuantity
-            // 
-            this.nmrStorageQuantity.Location = new System.Drawing.Point(111, 100);
-            this.nmrStorageQuantity.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.nmrStorageQuantity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrStorageQuantity.Name = "nmrStorageQuantity";
-            this.nmrStorageQuantity.Size = new System.Drawing.Size(171, 20);
-            this.nmrStorageQuantity.TabIndex = 3;
-            this.nmrStorageQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nmrStorageQuantity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(53, 102);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(52, 13);
-            this.label24.TabIndex = 2;
-            this.label24.Text = "Số lượng:";
-            // 
-            // txtStorageID
-            // 
-            this.txtStorageID.Location = new System.Drawing.Point(111, 74);
-            this.txtStorageID.Name = "txtStorageID";
-            this.txtStorageID.Size = new System.Drawing.Size(171, 20);
-            this.txtStorageID.TabIndex = 1;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(80, 74);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(25, 13);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Mã:";
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.panel16);
-            this.panel14.Controls.Add(this.panel15);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(0, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(417, 424);
-            this.panel14.TabIndex = 0;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.lvStorage);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(0, 88);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(417, 336);
-            this.panel16.TabIndex = 1;
-            // 
-            // lvStorage
-            // 
-            this.lvStorage.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader17,
-            this.columnHeader18,
-            this.columnHeader19});
-            this.lvStorage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvStorage.FullRowSelect = true;
-            this.lvStorage.HideSelection = false;
-            this.lvStorage.Location = new System.Drawing.Point(0, 0);
-            this.lvStorage.MultiSelect = false;
-            this.lvStorage.Name = "lvStorage";
-            this.lvStorage.Size = new System.Drawing.Size(417, 336);
-            this.lvStorage.TabIndex = 0;
-            this.lvStorage.UseCompatibleStateImageBehavior = false;
-            this.lvStorage.View = System.Windows.Forms.View.Details;
-            this.lvStorage.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvStorage_ColumnClick);
-            this.lvStorage.SelectedIndexChanged += new System.EventHandler(this.lvStorage_SelectedIndexChanged);
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Mã";
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Tên";
-            this.columnHeader18.Width = 250;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "Số lượng";
-            this.columnHeader19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader19.Width = 100;
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.label21);
-            this.panel15.Controls.Add(this.label22);
-            this.panel15.Controls.Add(this.btnStorageSearch);
-            this.panel15.Controls.Add(this.cboStorageSearchCatalog);
-            this.panel15.Controls.Add(this.txtStorageSearchString);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(0, 0);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(417, 88);
-            this.panel15.TabIndex = 0;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1, 49);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(59, 13);
-            this.label21.TabIndex = 7;
-            this.label21.Text = "Danh mục:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(8, 23);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(52, 13);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "Tìm kiếm:";
-            // 
-            // btnStorageSearch
-            // 
-            this.btnStorageSearch.Location = new System.Drawing.Point(330, 21);
-            this.btnStorageSearch.Name = "btnStorageSearch";
-            this.btnStorageSearch.Size = new System.Drawing.Size(75, 46);
-            this.btnStorageSearch.TabIndex = 9;
-            this.btnStorageSearch.Text = "Lọc";
-            this.btnStorageSearch.UseVisualStyleBackColor = true;
-            this.btnStorageSearch.Click += new System.EventHandler(this.btnStorageSearch_Click);
-            // 
-            // cboStorageSearchCatalog
-            // 
-            this.cboStorageSearchCatalog.FormattingEnabled = true;
-            this.cboStorageSearchCatalog.Location = new System.Drawing.Point(62, 46);
-            this.cboStorageSearchCatalog.Name = "cboStorageSearchCatalog";
-            this.cboStorageSearchCatalog.Size = new System.Drawing.Size(249, 21);
-            this.cboStorageSearchCatalog.TabIndex = 8;
-            // 
-            // txtStorageSearchString
-            // 
-            this.txtStorageSearchString.Location = new System.Drawing.Point(62, 20);
-            this.txtStorageSearchString.Name = "txtStorageSearchString";
-            this.txtStorageSearchString.Size = new System.Drawing.Size(249, 20);
-            this.txtStorageSearchString.TabIndex = 6;
             // 
             // tpCatalog
             // 
@@ -1801,6 +1360,7 @@ namespace GUI
             // 
             // tpBill
             // 
+            this.tpBill.Controls.Add(this.groupBox6);
             this.tpBill.Controls.Add(this.panel19);
             this.tpBill.Location = new System.Drawing.Point(4, 22);
             this.tpBill.Name = "tpBill";
@@ -1808,6 +1368,69 @@ namespace GUI
             this.tpBill.TabIndex = 4;
             this.tpBill.Text = "Đơn hàng";
             this.tpBill.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtBillName);
+            this.groupBox6.Controls.Add(this.txtBillAddress);
+            this.groupBox6.Controls.Add(this.txtBillPhone);
+            this.groupBox6.Controls.Add(this.label21);
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.btnBillStatus);
+            this.groupBox6.Controls.Add(this.radBillCancel);
+            this.groupBox6.Controls.Add(this.radBillDone);
+            this.groupBox6.Controls.Add(this.radBillShipping);
+            this.groupBox6.Controls.Add(this.radBillProccessing);
+            this.groupBox6.Controls.Add(this.radBillUnprocessed);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.lvBillDetail);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(424, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(368, 424);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Danh sách:";
+            // 
+            // lvBillDetail
+            // 
+            this.lvBillDetail.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader29,
+            this.columnHeader30,
+            this.columnHeader31,
+            this.columnHeader32});
+            this.lvBillDetail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lvBillDetail.FullRowSelect = true;
+            this.lvBillDetail.HideSelection = false;
+            this.lvBillDetail.Location = new System.Drawing.Point(3, 16);
+            this.lvBillDetail.MultiSelect = false;
+            this.lvBillDetail.Name = "lvBillDetail";
+            this.lvBillDetail.Size = new System.Drawing.Size(362, 177);
+            this.lvBillDetail.TabIndex = 0;
+            this.lvBillDetail.UseCompatibleStateImageBehavior = false;
+            this.lvBillDetail.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Mã";
+            this.columnHeader29.Width = 50;
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "Tên";
+            this.columnHeader30.Width = 145;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Giá";
+            this.columnHeader31.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader31.Width = 100;
+            // 
+            // columnHeader32
+            // 
+            this.columnHeader32.Text = "Số lượng";
+            this.columnHeader32.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panel19
             // 
@@ -1829,6 +1452,119 @@ namespace GUI
             this.panel19.Size = new System.Drawing.Size(424, 424);
             this.panel19.TabIndex = 0;
             // 
+            // btnBillSearch
+            // 
+            this.btnBillSearch.Location = new System.Drawing.Point(346, 11);
+            this.btnBillSearch.Name = "btnBillSearch";
+            this.btnBillSearch.Size = new System.Drawing.Size(75, 57);
+            this.btnBillSearch.TabIndex = 10;
+            this.btnBillSearch.Text = "Lọc";
+            this.btnBillSearch.UseVisualStyleBackColor = true;
+            this.btnBillSearch.Click += new System.EventHandler(this.btnBillSearch_Click);
+            // 
+            // nmrBillToTotal
+            // 
+            this.nmrBillToTotal.Location = new System.Drawing.Point(230, 57);
+            this.nmrBillToTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.nmrBillToTotal.Name = "nmrBillToTotal";
+            this.nmrBillToTotal.Size = new System.Drawing.Size(110, 20);
+            this.nmrBillToTotal.TabIndex = 9;
+            this.nmrBillToTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmrBillToTotal.Value = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // nmrBillFromTotal
+            // 
+            this.nmrBillFromTotal.Location = new System.Drawing.Point(230, 31);
+            this.nmrBillFromTotal.Name = "nmrBillFromTotal";
+            this.nmrBillFromTotal.Size = new System.Drawing.Size(110, 20);
+            this.nmrBillFromTotal.TabIndex = 9;
+            this.nmrBillFromTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(192, 64);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(39, 13);
+            this.label32.TabIndex = 8;
+            this.label32.Text = "Đến $:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(199, 37);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(32, 13);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "Từ $:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(8, 64);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 13);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Đến ngày:";
+            // 
+            // dtpBillSearchToDate
+            // 
+            this.dtpBillSearchToDate.Checked = false;
+            this.dtpBillSearchToDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpBillSearchToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBillSearchToDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtpBillSearchToDate.Location = new System.Drawing.Point(74, 57);
+            this.dtpBillSearchToDate.Name = "dtpBillSearchToDate";
+            this.dtpBillSearchToDate.ShowCheckBox = true;
+            this.dtpBillSearchToDate.Size = new System.Drawing.Size(112, 20);
+            this.dtpBillSearchToDate.TabIndex = 5;
+            this.dtpBillSearchToDate.Value = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            // 
+            // dtpBillSearchFromDate
+            // 
+            this.dtpBillSearchFromDate.Checked = false;
+            this.dtpBillSearchFromDate.CustomFormat = "dd/MM/yyy";
+            this.dtpBillSearchFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBillSearchFromDate.Location = new System.Drawing.Point(74, 31);
+            this.dtpBillSearchFromDate.Name = "dtpBillSearchFromDate";
+            this.dtpBillSearchFromDate.ShowCheckBox = true;
+            this.dtpBillSearchFromDate.Size = new System.Drawing.Size(112, 20);
+            this.dtpBillSearchFromDate.TabIndex = 4;
+            this.dtpBillSearchFromDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(15, 37);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(49, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Từ ngày:";
+            // 
+            // txtBillSearchString
+            // 
+            this.txtBillSearchString.Location = new System.Drawing.Point(74, 4);
+            this.txtBillSearchString.Name = "txtBillSearchString";
+            this.txtBillSearchString.Size = new System.Drawing.Size(266, 20);
+            this.txtBillSearchString.TabIndex = 2;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(12, 7);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(52, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Tìm kiếm:";
+            // 
             // lvBill
             // 
             this.lvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1838,16 +1574,16 @@ namespace GUI
             this.columnHeader28});
             this.lvBill.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lvBill.FullRowSelect = true;
-            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Header = "Chưa xử lý";
             listViewGroup1.Name = "lvgUnprocessed";
-            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Header = "Đang xử lý";
             listViewGroup2.Name = "lvgProcessing";
-            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Header = "Đang giao";
             listViewGroup3.Name = "lvgShipping";
-            listViewGroup4.Header = "ListViewGroup";
+            listViewGroup4.Header = "Đã Giao";
             listViewGroup4.Name = "lvgDone";
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "lvgStore";
+            listViewGroup5.Header = "Đã hủy";
+            listViewGroup5.Name = "lvgCancel";
             this.lvBill.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
@@ -1862,6 +1598,7 @@ namespace GUI
             this.lvBill.TabIndex = 0;
             this.lvBill.UseCompatibleStateImageBehavior = false;
             this.lvBill.View = System.Windows.Forms.View.Details;
+            this.lvBill.SelectedIndexChanged += new System.EventHandler(this.lvBill_SelectedIndexChanged);
             // 
             // columnHeader25
             // 
@@ -1870,7 +1607,7 @@ namespace GUI
             // 
             // columnHeader26
             // 
-            this.columnHeader26.Text = "Tài khoản";
+            this.columnHeader26.Text = "Tên KH";
             this.columnHeader26.Width = 150;
             // 
             // columnHeader27
@@ -1892,118 +1629,175 @@ namespace GUI
             // 
             this.ofdComboImage.Filter = "Image|*.jpg;*.jpeg;*.png";
             // 
-            // label28
+            // label13
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(12, 7);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(52, 13);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "Tìm kiếm:";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 351);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Trạng thái:";
             // 
-            // txtBillSearchString
+            // radBillUnprocessed
             // 
-            this.txtBillSearchString.Location = new System.Drawing.Point(74, 4);
-            this.txtBillSearchString.Name = "txtBillSearchString";
-            this.txtBillSearchString.Size = new System.Drawing.Size(266, 20);
-            this.txtBillSearchString.TabIndex = 2;
+            this.radBillUnprocessed.AutoSize = true;
+            this.radBillUnprocessed.Location = new System.Drawing.Point(105, 309);
+            this.radBillUnprocessed.Name = "radBillUnprocessed";
+            this.radBillUnprocessed.Size = new System.Drawing.Size(74, 17);
+            this.radBillUnprocessed.TabIndex = 2;
+            this.radBillUnprocessed.TabStop = true;
+            this.radBillUnprocessed.Text = "Chưa xử lý";
+            this.radBillUnprocessed.UseVisualStyleBackColor = true;
             // 
-            // label29
+            // radBillProccessing
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(15, 37);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(49, 13);
-            this.label29.TabIndex = 3;
-            this.label29.Text = "Từ ngày:";
+            this.radBillProccessing.AutoSize = true;
+            this.radBillProccessing.Location = new System.Drawing.Point(105, 332);
+            this.radBillProccessing.Name = "radBillProccessing";
+            this.radBillProccessing.Size = new System.Drawing.Size(75, 17);
+            this.radBillProccessing.TabIndex = 2;
+            this.radBillProccessing.TabStop = true;
+            this.radBillProccessing.Text = "Đang xử lý";
+            this.radBillProccessing.UseVisualStyleBackColor = true;
             // 
-            // dtpBillSearchFromDate
+            // radBillShipping
             // 
-            this.dtpBillSearchFromDate.Checked = false;
-            this.dtpBillSearchFromDate.CustomFormat = "dd/MM/yyy";
-            this.dtpBillSearchFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBillSearchFromDate.Location = new System.Drawing.Point(74, 31);
-            this.dtpBillSearchFromDate.Name = "dtpBillSearchFromDate";
-            this.dtpBillSearchFromDate.ShowCheckBox = true;
-            this.dtpBillSearchFromDate.Size = new System.Drawing.Size(112, 20);
-            this.dtpBillSearchFromDate.TabIndex = 4;
-            this.dtpBillSearchFromDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.radBillShipping.AutoSize = true;
+            this.radBillShipping.Location = new System.Drawing.Point(105, 355);
+            this.radBillShipping.Name = "radBillShipping";
+            this.radBillShipping.Size = new System.Drawing.Size(74, 17);
+            this.radBillShipping.TabIndex = 2;
+            this.radBillShipping.TabStop = true;
+            this.radBillShipping.Text = "Đang giao";
+            this.radBillShipping.UseVisualStyleBackColor = true;
             // 
-            // dtpBillSearchToDate
+            // radBillDone
             // 
-            this.dtpBillSearchToDate.Checked = false;
-            this.dtpBillSearchToDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpBillSearchToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBillSearchToDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtpBillSearchToDate.Location = new System.Drawing.Point(74, 57);
-            this.dtpBillSearchToDate.Name = "dtpBillSearchToDate";
-            this.dtpBillSearchToDate.ShowCheckBox = true;
-            this.dtpBillSearchToDate.Size = new System.Drawing.Size(112, 20);
-            this.dtpBillSearchToDate.TabIndex = 5;
-            this.dtpBillSearchToDate.Value = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.radBillDone.AutoSize = true;
+            this.radBillDone.Location = new System.Drawing.Point(105, 378);
+            this.radBillDone.Name = "radBillDone";
+            this.radBillDone.Size = new System.Drawing.Size(62, 17);
+            this.radBillDone.TabIndex = 2;
+            this.radBillDone.TabStop = true;
+            this.radBillDone.Text = "Đã giao";
+            this.radBillDone.UseVisualStyleBackColor = true;
             // 
-            // label30
+            // radBillCancel
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(8, 64);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(56, 13);
-            this.label30.TabIndex = 6;
-            this.label30.Text = "Đến ngày:";
+            this.radBillCancel.AutoSize = true;
+            this.radBillCancel.Location = new System.Drawing.Point(105, 401);
+            this.radBillCancel.Name = "radBillCancel";
+            this.radBillCancel.Size = new System.Drawing.Size(59, 17);
+            this.radBillCancel.TabIndex = 2;
+            this.radBillCancel.TabStop = true;
+            this.radBillCancel.Text = "Đã hủy";
+            this.radBillCancel.UseVisualStyleBackColor = true;
             // 
-            // label31
+            // btnBillStatus
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(199, 37);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(32, 13);
-            this.label31.TabIndex = 7;
-            this.label31.Text = "Từ $:";
+            this.btnBillStatus.Location = new System.Drawing.Point(247, 332);
+            this.btnBillStatus.Name = "btnBillStatus";
+            this.btnBillStatus.Size = new System.Drawing.Size(75, 51);
+            this.btnBillStatus.TabIndex = 3;
+            this.btnBillStatus.Text = "Lưu";
+            this.btnBillStatus.UseVisualStyleBackColor = true;
+            this.btnBillStatus.Click += new System.EventHandler(this.btnBillStatus_Click);
             // 
-            // label32
+            // label14
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(192, 64);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(39, 13);
-            this.label32.TabIndex = 8;
-            this.label32.Text = "Đến $:";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(88, 254);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Tên:";
             // 
-            // nmrBillFromTotal
+            // label17
             // 
-            this.nmrBillFromTotal.Location = new System.Drawing.Point(230, 31);
-            this.nmrBillFromTotal.Name = "nmrBillFromTotal";
-            this.nmrBillFromTotal.Size = new System.Drawing.Size(110, 20);
-            this.nmrBillFromTotal.TabIndex = 9;
-            this.nmrBillFromTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(74, 280);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 13);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Địa chỉ:";
             // 
-            // nmrBillToTotal
+            // label18
             // 
-            this.nmrBillToTotal.Location = new System.Drawing.Point(230, 57);
-            this.nmrBillToTotal.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.nmrBillToTotal.Name = "nmrBillToTotal";
-            this.nmrBillToTotal.Size = new System.Drawing.Size(110, 20);
-            this.nmrBillToTotal.TabIndex = 9;
-            this.nmrBillToTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nmrBillToTotal.Value = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(44, 306);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 13);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Số điện thoại:";
             // 
-            // btnBillSearch
+            // txtSellName
             // 
-            this.btnBillSearch.Location = new System.Drawing.Point(346, 11);
-            this.btnBillSearch.Name = "btnBillSearch";
-            this.btnBillSearch.Size = new System.Drawing.Size(75, 57);
-            this.btnBillSearch.TabIndex = 10;
-            this.btnBillSearch.Text = "Lọc";
-            this.btnBillSearch.UseVisualStyleBackColor = true;
-            this.btnBillSearch.Click += new System.EventHandler(this.btnBillSearch_Click);
+            this.txtSellName.Location = new System.Drawing.Point(123, 251);
+            this.txtSellName.Name = "txtSellName";
+            this.txtSellName.Size = new System.Drawing.Size(272, 20);
+            this.txtSellName.TabIndex = 7;
+            // 
+            // txtSellAddress
+            // 
+            this.txtSellAddress.Location = new System.Drawing.Point(123, 277);
+            this.txtSellAddress.Name = "txtSellAddress";
+            this.txtSellAddress.Size = new System.Drawing.Size(272, 20);
+            this.txtSellAddress.TabIndex = 7;
+            // 
+            // txtSellPhone
+            // 
+            this.txtSellPhone.Location = new System.Drawing.Point(123, 303);
+            this.txtSellPhone.Name = "txtSellPhone";
+            this.txtSellPhone.Size = new System.Drawing.Size(272, 20);
+            this.txtSellPhone.TabIndex = 7;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(72, 219);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Tên:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(58, 245);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(43, 13);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "Địa chỉ:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(28, 271);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(73, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Số điện thoại:";
+            // 
+            // txtBillPhone
+            // 
+            this.txtBillPhone.Location = new System.Drawing.Point(105, 268);
+            this.txtBillPhone.Name = "txtBillPhone";
+            this.txtBillPhone.Size = new System.Drawing.Size(217, 20);
+            this.txtBillPhone.TabIndex = 7;
+            // 
+            // txtBillAddress
+            // 
+            this.txtBillAddress.Location = new System.Drawing.Point(105, 242);
+            this.txtBillAddress.Name = "txtBillAddress";
+            this.txtBillAddress.Size = new System.Drawing.Size(217, 20);
+            this.txtBillAddress.TabIndex = 7;
+            // 
+            // txtBillName
+            // 
+            this.txtBillName.Location = new System.Drawing.Point(105, 216);
+            this.txtBillName.Name = "txtBillName";
+            this.txtBillName.Size = new System.Drawing.Size(217, 20);
+            this.txtBillName.TabIndex = 7;
             // 
             // Manage
             // 
@@ -2013,7 +1807,6 @@ namespace GUI
             this.Controls.Add(this.tabMain);
             this.Name = "Manage";
             this.Text = "Manage";
-            this.Load += new System.EventHandler(this.Manage_Load);
             this.tabMain.ResumeLayout(false);
             this.tpSell.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
@@ -2024,6 +1817,8 @@ namespace GUI
             this.tpProduct.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrProductQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrProductPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -2036,39 +1831,25 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.nmrComboDetailQuantity)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrComboPrevPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picComboImage)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.tpPrice.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPriceDiscount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPricePrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrPricePrevPrice)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.tpStorage.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrStorageQuantity)).EndInit();
-            this.panel14.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
             this.tpCatalog.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrBillToTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrBillFromTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2106,7 +1887,6 @@ namespace GUI
         private System.Windows.Forms.Button btnProductSearch;
         private System.Windows.Forms.ComboBox cboProductSearchCatalog;
         private System.Windows.Forms.TextBox txtProductSearchString;
-        private System.Windows.Forms.TabPage tpPrice;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnCatalogEdit;
         private System.Windows.Forms.Button btnCatalogDelete;
@@ -2152,66 +1932,12 @@ namespace GUI
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nmrComboDetailQuantity;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnPriceSearch;
-        private System.Windows.Forms.ComboBox cboPriceSearchCatalog;
-        private System.Windows.Forms.TextBox txtPriceSearchString;
-        private System.Windows.Forms.RadioButton radPriceCombo;
-        private System.Windows.Forms.RadioButton radPriceProduct;
-        private System.Windows.Forms.ListView lvPrice;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.PictureBox picProductImage;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.OpenFileDialog ofdProductImage;
         private System.Windows.Forms.PictureBox picComboImage;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.OpenFileDialog ofdComboImage;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListView lvPriceHistory;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton radPriceUpdateCombo;
-        private System.Windows.Forms.RadioButton radPriceUpdateProduct;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown nmrPriceDiscount;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown nmrPricePrice;
-        private System.Windows.Forms.NumericUpDown nmrPricePrevPrice;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.CheckBox chkPricePromotion;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtPriceOptionID;
-        private System.Windows.Forms.Button btnPriceUpdate;
-        private System.Windows.Forms.TabPage tpStorage;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.ListView lvStorage;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
-        private System.Windows.Forms.ColumnHeader columnHeader19;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button btnStorageSearch;
-        private System.Windows.Forms.ComboBox cboStorageSearchCatalog;
-        private System.Windows.Forms.TextBox txtStorageSearchString;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnStorageExport;
-        private System.Windows.Forms.Button btnStorageImport;
-        private System.Windows.Forms.NumericUpDown nmrStorageQuantity;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtStorageID;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btnSellAdd;
         private System.Windows.Forms.TextBox txtSellID;
@@ -2249,5 +1975,43 @@ namespace GUI
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.DateTimePicker dtpBillSearchToDate;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ListView lvBillDetail;
+        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
+        private System.Windows.Forms.ColumnHeader columnHeader32;
+        private System.Windows.Forms.ColumnHeader columnHeader30;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.ColumnHeader columnHeader33;
+        private System.Windows.Forms.ColumnHeader columnHeader34;
+        private System.Windows.Forms.NumericUpDown nmrProductQuantity;
+        private System.Windows.Forms.NumericUpDown nmrProductPrice;
+        private System.Windows.Forms.NumericUpDown nmrComboPrice;
+        private System.Windows.Forms.NumericUpDown nmrComboDiscount;
+        private System.Windows.Forms.NumericUpDown nmrComboPrevPrice;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ColumnHeader columnHeader35;
+        private System.Windows.Forms.Button btnBillStatus;
+        private System.Windows.Forms.RadioButton radBillCancel;
+        private System.Windows.Forms.RadioButton radBillDone;
+        private System.Windows.Forms.RadioButton radBillShipping;
+        private System.Windows.Forms.RadioButton radBillProccessing;
+        private System.Windows.Forms.RadioButton radBillUnprocessed;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtSellPhone;
+        private System.Windows.Forms.TextBox txtSellAddress;
+        private System.Windows.Forms.TextBox txtSellName;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtBillName;
+        private System.Windows.Forms.TextBox txtBillAddress;
+        private System.Windows.Forms.TextBox txtBillPhone;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
     }
 }

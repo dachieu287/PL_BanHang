@@ -11,12 +11,12 @@ namespace BUS
         {
             dao = new AccountDAO();
         }
-        public LoginStatus Login(string email, string password)
+        public LoginStatus Login(string username, string password)
         {
-            Account account = dao.GetAccount(email);
+            Account account = dao.GetAccount(username);
             if (account == null)
             {
-                return LoginStatus.WRONG_EMAIL;
+                return LoginStatus.WRONG_USERNAME;
             }
             else if (account.Password != password)
             {
@@ -41,7 +41,7 @@ namespace BUS
     public enum LoginStatus
     {
         SUCCESS,
-        WRONG_EMAIL,
+        WRONG_USERNAME,
         WRONG_PASSWORD,
         LOCKED,
         NO_PERMISSION

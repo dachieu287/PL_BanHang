@@ -11,6 +11,7 @@ using DTO;
 using BUS;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace GUI
 {
@@ -24,7 +25,6 @@ namespace GUI
         private readonly CatalogBUS catalogBUS = null;
         private readonly ComboBUS comboBUS = null;
         private readonly ComboDetailBUS comboDetailBUS = null;
-        private readonly PriceBUS priceBUS = null;
         private readonly ProductBUS productBUS = null;
 
         public Manage()
@@ -33,10 +33,7 @@ namespace GUI
             sorter = new ListViewColumnSorter();
             lvCatalog.ListViewItemSorter = sorter;
             lvCombo.ListViewItemSorter = sorter;
-            lvPrice.ListViewItemSorter = sorter;
-            lvPriceHistory.ListViewItemSorter = sorter;
             lvProduct.ListViewItemSorter = sorter;
-            lvStorage.ListViewItemSorter = sorter;
             
             accountBUS = new AccountBUS();
             billBUS = new BillBUS();
@@ -44,7 +41,6 @@ namespace GUI
             catalogBUS = new CatalogBUS();
             comboBUS = new ComboBUS();
             comboDetailBUS = new ComboDetailBUS();
-            priceBUS = new PriceBUS();
             productBUS = new ProductBUS();
         }
 
@@ -63,29 +59,10 @@ namespace GUI
             {
                 ShowAllCombo();
             }
-            else if (tabMain.SelectedTab.Name.Equals("tpPrice"))
-            {
-                ShowAllPriceByOption();
-                LoadCboCatalogPrice();
-            }
-            else if (tabMain.SelectedTab.Name.Equals("tpStorage"))
-            {
-                ShowAllStorage();
-                LoadCboCatalogStorage();
-            }
             else if (tabMain.SelectedTab.Name.Equals("tpBill"))
             {
                 ShowAllBill();
             }
-        }
-
-        private void LoadCboCatalogStorage()
-        {
-            cboStorageSearchCatalog.Items.Clear();
-            List<Catalog> catalogs = catalogBUS.GetAll();
-            cboStorageSearchCatalog.Items.Add("Tất cả");
-            cboStorageSearchCatalog.Items.AddRange(catalogs.ToArray());
-            cboStorageSearchCatalog.SelectedIndex = 0;
         }
         private void ShowAllBill()
         {
@@ -94,12 +71,32 @@ namespace GUI
             foreach (Bill bill in bills)
             {
                 ListViewItem item = new ListViewItem(bill.ID.ToString());
-                item.SubItems.Add(bill.Account.Email);
+                item.SubItems.Add(bill.Name);
                 item.SubItems.Add(bill.Datetime.ToString("dd/MM/yyyy hh:mm:ss"));
                 item.SubItems.Add(bill.Total.ToString());
                 item.SubItems.Add(bill.Status.ToString());
                 item.Tag = bill;
-                item.Group = lvBill.Groups["lvgStore"];
+                if (bill.Status == BillStatus.Unprocessed)
+                {
+                    item.Group = lvBill.Groups["lvgUnprocessed"];
+                }
+                else if (bill.Status == BillStatus.Processing)
+                {
+                    item.Group = lvBill.Groups["lvgProcessing"];
+                }
+                else if (bill.Status == BillStatus.Shipping)
+                {
+                    item.Group = lvBill.Groups["lvgShipping"];
+                }
+                else if (bill.Status == BillStatus.Done)
+                {
+                    item.Group = lvBill.Groups["lvgDone"];
+                }
+                else if (bill.Status == BillStatus.Cancel)
+                {
+                    item.Group = lvBill.Groups["lvgCancel"];
+                }
+                
                 lvBill.Items.Add(item);
             }
         }
@@ -110,40 +107,60 @@ namespace GUI
             foreach (Bill bill in bills)
             {
                 ListViewItem item = new ListViewItem(bill.ID.ToString());
-                item.SubItems.Add(bill.Account.Email);
+                item.SubItems.Add(bill.Name);
                 item.SubItems.Add(bill.Datetime.ToString("dd/MM/yyyy hh:mm:ss"));
                 item.SubItems.Add(bill.Total.ToString());
                 item.SubItems.Add(bill.Status.ToString());
                 item.Tag = bill;
-                item.Group = lvBill.Groups["lvgStore"];
+                if (bill.Status == BillStatus.Unprocessed)
+                {
+                    item.Group = lvBill.Groups["lvgUnprocessed"];
+                }
+                else if (bill.Status == BillStatus.Processing)
+                {
+                    item.Group = lvBill.Groups["lvgProcessing"];
+                }
+                else if (bill.Status == BillStatus.Shipping)
+                {
+                    item.Group = lvBill.Groups["lvgShipping"];
+                }
+                else if (bill.Status == BillStatus.Done)
+                {
+                    item.Group = lvBill.Groups["lvgDone"];
+                }
+                else if (bill.Status == BillStatus.Cancel)
+                {
+                    item.Group = lvBill.Groups["lvgCancel"];
+                }
                 lvBill.Items.Add(item);
             }
         }
 
-        private void ShowAllStorage()
+        private void ShowBillDetails(List<BillDetail> billDetails)
         {
-            lvStorage.Items.Clear();
-            List<Product> products = productBUS.GetAll();
-            foreach (Product product in products)
+            lvBillDetail.Items.Clear();
+            foreach (BillDetail billDetail in billDetails)
             {
-                ListViewItem item = new ListViewItem(product.ID);
-                item.SubItems.Add(product.Name);
-                item.SubItems.Add(product.Quantity.ToString());
-                item.Tag = product;
-                lvStorage.Items.Add(item);
-            }
-        }
+                string id = "";
+                string name = "";
+                decimal price = billDetail.Price;
+                int quantity = billDetail.Quantity;
+                if (billDetail.Product != null)
+                {
+                    id = billDetail.Product.ID;
+                    name = productBUS.GetName(id);
+                }
+                else if (billDetail.Combo != null)
+                {
+                    id = billDetail.Combo.ID;
+                    name = comboBUS.GetName(id);
+                }
 
-        private void ShowStorages(List<Product> products)
-        {
-            lvStorage.Items.Clear();
-            foreach (Product product in products)
-            {
-                ListViewItem item = new ListViewItem(product.ID);
-                item.SubItems.Add(product.Name);
-                item.SubItems.Add(product.Quantity.ToString());
-                item.Tag = product;
-                lvStorage.Items.Add(item);
+                ListViewItem item = new ListViewItem(id);
+                item.SubItems.Add(name);
+                item.SubItems.Add(price.ToString());
+                item.SubItems.Add(quantity.ToString());
+                lvBillDetail.Items.Add(item);
             }
         }
 
@@ -196,6 +213,8 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem(product.ID);
                 item.SubItems.Add(product.Name);
+                item.SubItems.Add(product.Price.ToString());
+                item.SubItems.Add(product.Quantity.ToString());
                 item.SubItems.Add(product.Catalog.ID);
                 item.Tag = product;
 
@@ -210,6 +229,8 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem(product.ID);
                 item.SubItems.Add(product.Name);
+                item.SubItems.Add(product.Price.ToString());
+                item.SubItems.Add(product.Quantity.ToString());
                 item.SubItems.Add(product.Catalog.ID);
                 item.Tag = product;
 
@@ -225,7 +246,7 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem(combo.ID);
                 item.SubItems.Add(combo.Name);
-                item.SubItems.Add(combo.Description);
+                item.SubItems.Add(combo.Price.ToString());
                 item.Tag = combo;
 
                 lvCombo.Items.Add(item);
@@ -239,7 +260,7 @@ namespace GUI
             {
                 ListViewItem item = new ListViewItem(combo.ID);
                 item.SubItems.Add(combo.Name);
-                item.SubItems.Add(combo.Description);
+                item.SubItems.Add(combo.Price.ToString());
                 item.Tag = combo;
 
                 lvCombo.Items.Add(item);
@@ -261,101 +282,6 @@ namespace GUI
             }
         }
 
-        public void ShowAllPriceByOption()
-        {
-            lvPrice.Items.Clear();
-            if (radPriceProduct.Checked)
-            {
-                List<Price> prices = priceBUS.GetByProduct();
-                foreach (Price price in prices)
-                {
-                    ListViewItem item = new ListViewItem(price.Product.ID);
-                    item.SubItems.Add(price.Product.Name);
-                    item.SubItems.Add(price.Pricez.ToString());
-                    item.Tag = price.Product.ID;
-                    lvPrice.Items.Add(item);
-                }
-            }
-            else if (radPriceCombo.Checked)
-            {
-                List<Price> prices = priceBUS.GetByCombo();
-                foreach (Price price in prices)
-                {
-                    ListViewItem item = new ListViewItem(price.Combo.ID);
-                    item.SubItems.Add(price.Combo.Name);
-                    item.SubItems.Add(price.Pricez.ToString());
-                    item.Tag = price.Combo.ID;
-                    lvPrice.Items.Add(item);
-                }
-            }
-        }
-
-        public void ShowPricesByOption(List<Price> prices)
-        {
-            lvPrice.Items.Clear();
-            if (radPriceProduct.Checked)
-            {
-                foreach (Price price in prices)
-                {
-                    ListViewItem item = new ListViewItem(price.Product.ID);
-                    item.SubItems.Add(price.Product.Name);
-                    item.SubItems.Add(price.Pricez.ToString());
-                    item.Tag = price.Product.ID;
-                    lvPrice.Items.Add(item);
-                }
-            }
-            else if (radPriceCombo.Checked)
-            {
-                foreach (Price price in prices)
-                {
-                    ListViewItem item = new ListViewItem(price.Combo.ID);
-                    item.SubItems.Add(price.Combo.Name);
-                    item.SubItems.Add(price.Pricez.ToString());
-                    item.Tag = price.Combo.ID;
-                    lvPrice.Items.Add(item);
-                }
-            }
-        }
-
-        public void ShowHistoryPriceByProduct(string productid)
-        {
-            lvPriceHistory.Items.Clear();
-            List<Price> prices = priceBUS.GetHistoryByProduct(productid);
-            foreach (Price price in prices)
-            {
-                ListViewItem item = new ListViewItem(price.FromDatetime.ToString("dd/MM/yyyy hh:mm:ss"));
-                item.SubItems.Add(price.ToDatetime == null ? "" : ((DateTime)price.ToDatetime).ToString("dd/MM/yyyy hh:mm:ss"));
-                item.SubItems.Add(price.PrevPrice.ToString());
-                item.SubItems.Add(price.Discount.ToString());
-                item.SubItems.Add(price.Pricez.ToString());
-                lvPriceHistory.Items.Add(item);
-            }
-        }
-
-        public void ShowHistoryPriceByCombo(string comboid)
-        {
-            lvPriceHistory.Items.Clear();
-            List<Price> prices = priceBUS.GetHistoryByCombo(comboid);
-            foreach (Price price in prices)
-            {
-                ListViewItem item = new ListViewItem(price.FromDatetime.ToString("dd/MM/yyyy hh:mm:ss"));
-                item.SubItems.Add(price.ToDatetime == null ? "" : ((DateTime)price.ToDatetime).ToString("dd/MM/yyyy hh:mm:ss"));
-                item.SubItems.Add(price.PrevPrice.ToString());
-                item.SubItems.Add(price.Discount.ToString());
-                item.SubItems.Add(price.Pricez.ToString());
-                lvPriceHistory.Items.Add(item);
-            }
-        }
-
-        public void LoadCboCatalogPrice()
-        {
-            cboPriceSearchCatalog.Items.Clear();
-            List<Catalog> catalogs = catalogBUS.GetAll();
-            cboPriceSearchCatalog.Items.Add("Tất cả");
-            cboPriceSearchCatalog.Items.AddRange(catalogs.ToArray());
-            cboPriceSearchCatalog.SelectedIndex = 0;
-        }
-
         private void lvProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvProduct.SelectedItems.Count == 0)
@@ -366,6 +292,8 @@ namespace GUI
             Product product = lvProduct.SelectedItems[0].Tag as Product;
             txtProductID.Text = product.ID;
             txtProductName.Text = product.Name;
+            nmrProductQuantity.Value = product.Quantity;
+            nmrProductPrice.Value = product.Price;
 
             int index = -1;
             for (int i = 0; i < cboProductCatalog.Items.Count; i++)
@@ -504,6 +432,8 @@ namespace GUI
             txtProductName.Text = "";
             txtProductDescription.Text = "";
             cboProductCatalog.SelectedIndex = -1;
+            nmrProductQuantity.Value = 0;
+            nmrProductPrice.Value = 0;
             ofdProductImage.Reset();
             picProductImage.Image = GUI.Properties.Resources.upload;
         }
@@ -514,6 +444,8 @@ namespace GUI
             string name = txtProductName.Text;
             string description = txtProductDescription.Text;
             string filename = ofdProductImage.FileName;
+            int quantity = (int)nmrProductQuantity.Value;
+            decimal price = nmrProductPrice.Value;
             Catalog catalog = cboProductCatalog.SelectedItem as Catalog;
 
             if (String.IsNullOrWhiteSpace(id))
@@ -546,6 +478,8 @@ namespace GUI
                 Name = name,
                 Description = description,
                 Catalog = catalog,
+                Quantity = quantity,
+                Price = price,
                 Image = image
             };
 
@@ -558,9 +492,8 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Thêm thất bại");
+                MessageBox.Show("Thêm thất bại\n - Mã đã tồn tại");
             }
-
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -574,7 +507,8 @@ namespace GUI
             string id = txtProductID.Text;
             string name = txtProductName.Text;
             string description = txtProductDescription.Text;
-            byte[] image = null;
+            int quantity = (int)nmrProductQuantity.Value;
+            decimal price = nmrProductPrice.Value;
             string filename = ofdProductImage.FileName;
             Catalog catalog = cboProductCatalog.SelectedItem as Catalog;
 
@@ -596,6 +530,7 @@ namespace GUI
 
 
             Product oldproduct = lvProduct.SelectedItems[0].Tag as Product;
+            byte[] image;
             if (String.IsNullOrEmpty(filename))
             {
                 image = oldproduct.Image;
@@ -613,7 +548,9 @@ namespace GUI
                 Name = name,
                 Description = description,
                 Image = image,
-                Catalog = catalog
+                Catalog = catalog,
+                Quantity = quantity,
+                Price = price,
             };
 
             bool result = productBUS.Edit(oldproduct.ID, product);
@@ -625,7 +562,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Sửa thất bại");
+                MessageBox.Show("Sửa thất bại\n - Trùng mã");
             }
         }
 
@@ -659,11 +596,6 @@ namespace GUI
             ShowProducts(products);
         }
 
-        private void Manage_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lvCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvCombo.SelectedItems.Count == 0)
@@ -676,6 +608,9 @@ namespace GUI
             txtComboID.Text = combo.ID;
             txtComboName.Text = combo.Name;
             txtComboDescription.Text = combo.Description;
+            nmrComboPrevPrice.Value = combo.PrevPrice;
+            nmrComboDiscount.Value = combo.Discount;
+            nmrComboPrice.Value = combo.Price;
             picComboImage.Image = Image.FromStream(new MemoryStream(combo.Image));
 
             ShowComboDetailByComboID(combo.ID);
@@ -686,6 +621,9 @@ namespace GUI
             txtComboID.Text = "";
             txtComboName.Text = "";
             txtComboDescription.Text = "";
+            nmrComboPrevPrice.Value = 0;
+            nmrComboDiscount.Value = 0;
+            nmrComboPrice.Value = 0;
             ofdComboImage.Reset();
             picComboImage.Image = GUI.Properties.Resources.upload;
         }
@@ -695,6 +633,9 @@ namespace GUI
             string id = txtComboID.Text;
             string name = txtComboName.Text;
             string description = txtComboDescription.Text;
+            decimal prevprice = nmrComboPrevPrice.Value;
+            int discount = (int)nmrComboDiscount.Value;
+            decimal price = nmrComboPrice.Value;
             string filename = ofdComboImage.FileName;
 
             if (String.IsNullOrWhiteSpace(id))
@@ -722,7 +663,10 @@ namespace GUI
                 ID = id,
                 Name = name,
                 Description = description,
-                Image = image
+                Image = image,
+                PrevPrice = prevprice,
+                Discount = discount,
+                Price = price,
             };
 
             bool result = comboBUS.Add(combo);
@@ -750,6 +694,9 @@ namespace GUI
             string name = txtComboName.Text;
             string description = txtComboDescription.Text;
             string filename = ofdComboImage.FileName;
+            decimal prevprice = nmrComboPrevPrice.Value;
+            int discount = (int)nmrComboDiscount.Value;
+            decimal price = nmrComboPrice.Value;
 
             if (String.IsNullOrWhiteSpace(id))
             {
@@ -780,7 +727,10 @@ namespace GUI
                 ID = id,
                 Name = name,
                 Description = description,
-                Image = image
+                Image = image,
+                PrevPrice = prevprice,
+                Discount = discount,
+                Price = price
             };
 
             bool result = comboBUS.Edit(oldcombo.ID, combo);
@@ -847,6 +797,8 @@ namespace GUI
             {
                 MessageBox.Show("Thêm thành công");
                 ShowComboDetailByComboID(comboid);
+                txtComboDetailProductID.Text = "";
+                nmrComboDetailQuantity.Value = 0;
             }
             else
             {
@@ -877,8 +829,8 @@ namespace GUI
 
         private void btnComboSearch_Click(object sender, EventArgs e)
         {
-            List<Combo> combos = null;
             string stringSearch = txtComboSearch.Text;
+            List<Combo> combos;
             if (String.IsNullOrEmpty(stringSearch))
             {
                 combos = comboBUS.GetAll();
@@ -947,201 +899,7 @@ namespace GUI
                 picComboImage.Image = Image.FromFile(ofdComboImage.FileName);
             }
         }
-
-        private void lvPrice_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvPrice.SelectedItems.Count == 0)
-            {
-                lvPriceHistory.Items.Clear();
-                return;
-            }
-
-            string id = lvPrice.SelectedItems[0].Tag as string;
-            txtPriceOptionID.Text = id;
-            if (radPriceProduct.Checked)
-            {
-                ShowHistoryPriceByProduct(id);
-                radPriceUpdateProduct.Checked = true;
-            }
-            else if (radPriceCombo.Checked)
-            {
-                ShowHistoryPriceByCombo(id);
-                radPriceUpdateCombo.Checked = true;
-            }
-        }
-
-        private void chkPromotion_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkPricePromotion.Checked)
-            {
-                nmrPricePrevPrice.Enabled = true;
-                nmrPriceDiscount.Enabled = true;
-            }
-            else
-            {
-                nmrPricePrevPrice.Enabled = false;
-                nmrPriceDiscount.Enabled = false;
-            }
-        }
-
-        private void btnPriceUpdate_Click(object sender, EventArgs e)
-        {
-            string optionid = txtPriceOptionID.Text;
-
-            if (String.IsNullOrEmpty(optionid))
-            {
-                MessageBox.Show("Vui lòng nhập mã");
-                return;
-            }
-            Price price = new Price();
-            if (radPriceUpdateProduct.Checked)
-            {
-                price.Product = new Product { ID = optionid };
-            }
-            else if (radPriceUpdateCombo.Checked)
-            {
-                price.Combo = new Combo { ID = optionid };
-            }
-            if (chkPricePromotion.Checked)
-            {
-                price.Discount = (int)nmrPriceDiscount.Value;
-                price.PrevPrice = nmrPricePrevPrice.Value;
-            }
-            price.FromDatetime = DateTime.Now;
-            price.Pricez = nmrPricePrice.Value;
-
-            bool result = priceBUS.Update(price);
-            if (result)
-            {
-                MessageBox.Show("Cập nhật thành công");
-                if (radPriceUpdateProduct.Checked)
-                {
-                    ShowHistoryPriceByProduct(optionid);
-                }
-                else if (radPriceUpdateCombo.Checked)
-                {
-                    ShowHistoryPriceByCombo(optionid);
-                }
-                ShowAllPriceByOption();
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật thất bại");
-            }
-        }
-
-        private void radPriceProduct_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radPriceCombo.Checked)
-            {
-                cboPriceSearchCatalog.Enabled = false;
-            }
-            else if (radPriceProduct.Checked)
-            {
-                cboPriceSearchCatalog.Enabled = true;
-            }
-             ShowAllPriceByOption();
-             
-        }
-
-        private void btnPriceSearch_Click(object sender, EventArgs e)
-        {
-            string searchString = txtPriceSearchString.Text;
-            string searchCatalog = null;
-            if (radPriceProduct.Checked)
-            {               
-                if (cboPriceSearchCatalog.SelectedIndex > 0)
-                {
-                    searchCatalog = (cboPriceSearchCatalog.SelectedItem as Catalog).ID;
-                }
-                List<Price> prices = priceBUS.SearchByProduct(searchString, searchCatalog);
-                ShowPricesByOption(prices);
-            }
-            else if (radPriceCombo.Checked)
-            {
-                List<Price> prices = priceBUS.SearchByCombo(searchString);
-                ShowPricesByOption(prices);
-            }
-        }
-
-        private void lvPrice_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (sorter.Order == SortOrder.Ascending)
-            {
-                sorter.Order = SortOrder.Descending;
-            }
-            else
-            {
-                sorter.Order = SortOrder.Ascending;
-            }
-            sorter.SortColumn = e.Column;
-            lvPrice.Sort();
-        }
-
-        private void lvPriceHistory_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (sorter.Order == SortOrder.Ascending)
-            {
-                sorter.Order = SortOrder.Descending;
-            }
-            else
-            {
-                sorter.Order = SortOrder.Ascending;
-            }
-            sorter.SortColumn = e.Column;
-            lvPriceHistory.Sort();
-        }
-
-        private void btnStorageImport_Click(object sender, EventArgs e)
-        {
-            string id = txtStorageID.Text;
-            int quantity = (int)nmrStorageQuantity.Value;
-            if (String.IsNullOrWhiteSpace(id))
-            {
-                MessageBox.Show("Vui lòng nhập mã");
-                return;
-            }
-
-            if (productBUS.ChangeQuantity(id, quantity, true))
-            {
-                MessageBox.Show("Nhập thành công");
-                ShowAllStorage();
-            }
-            else
-            {
-                MessageBox.Show("Nhập thất bại\n - Mã không tồn tại");
-            }
-        }
-
-        private void lvStorage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvStorage.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            txtStorageID.Text = (lvStorage.SelectedItems[0].Tag as Product).ID;
-        }
-
-        private void btnStorageExport_Click(object sender, EventArgs e)
-        {
-            string id = txtStorageID.Text;
-            int quantity = (int)nmrStorageQuantity.Value;
-            if (String.IsNullOrWhiteSpace(id))
-            {
-                MessageBox.Show("Vui lòng nhập mã");
-                return;
-            }
-
-            if (productBUS.ChangeQuantity(id, quantity, false))
-            {
-                MessageBox.Show("Xuất thành công");
-                ShowAllStorage();
-            }
-            else
-            {
-                MessageBox.Show("Xuất thất bại\n - Mã không tồn tại\n - Số lượng xuất nhiều hơn số lượng hàng còn");
-            }
-        }
+       
 
         private void btnSellAdd_Click(object sender, EventArgs e)
         {
@@ -1186,35 +944,23 @@ namespace GUI
                 ListViewItem item = new ListViewItem();
                 if (radSellProduct.Checked)
                 {
-                    
-                    if (billDetail.Quantity < quantity)
-                    {
-                        MessageBox.Show("Không đủ hàng");
-                        return;
-                    }
                     item.Text = billDetail.Product.ID;
                     item.SubItems.Add(billDetail.Product.Name);
                 }
                 else if (radSellCombo.Checked)
                 {
-                    string result = billDetailBUS.CheckQuantityCombo(id, quantity);
-                    if (!String.IsNullOrEmpty(result))
-                    {
-                        MessageBox.Show(result + " trong combo không đủ hàng");
-                        return;
-                    }
                     item.Text = billDetail.Combo.ID;
                     item.SubItems.Add(billDetail.Combo.Name);
                 }
                 billDetail.Quantity = quantity;
 
-                item.SubItems.Add(billDetail.Price.Pricez.ToString());
+                item.SubItems.Add(billDetail.Price.ToString());
                 item.SubItems.Add(quantity.ToString());
-                item.SubItems.Add((billDetail.Price.Pricez * quantity).ToString());
+                item.SubItems.Add((billDetail.Price * quantity).ToString());
                 item.Tag = billDetail;
                 lvSell.Items.Add(item);
 
-                txtSellTotal.Text = (decimal.Parse(txtSellTotal.Text) + (quantity * billDetail.Price.Pricez)).ToString();
+                txtSellTotal.Text = (decimal.Parse(txtSellTotal.Text) + (quantity * billDetail.Price)).ToString();
                 txtSellID.Text = "";
                 nmrSellQuantity.Value = 1;
             }
@@ -1232,7 +978,7 @@ namespace GUI
             }
 
             BillDetail billDetail = lvSell.SelectedItems[0].Tag as BillDetail;
-            txtSellTotal.Text = (decimal.Parse(txtSellTotal.Text) - (billDetail.Quantity * billDetail.Price.Pricez)).ToString();
+            txtSellTotal.Text = (decimal.Parse(txtSellTotal.Text) - (billDetail.Quantity * billDetail.Price)).ToString();
             lvSell.Items.RemoveAt(lvSell.SelectedIndices[0]);
         }
 
@@ -1249,56 +995,55 @@ namespace GUI
                 MessageBox.Show("Vui lòng thêm hàng");
                 return;
             }
+            string name = txtSellName.Text;
+            string address = txtSellAddress.Text;
+            string phone = txtSellPhone.Text;
+
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Vui lòng nhập tên");
+                return;
+            }
+
+            if (String.IsNullOrWhiteSpace(address))
+            {
+                MessageBox.Show("Vui lòng nhập địa chỉ");
+            }
+
+            if (!Regex.IsMatch(phone, @"^([\+]?33[-]?|[0])?[1-9][0-9]{8}$"))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ");
+                return;
+            }
+
             List<BillDetail> billDetails = new List<BillDetail>();
             foreach (ListViewItem item in lvSell.Items)
             {
                 BillDetail billDetail = item.Tag as BillDetail;
                 billDetails.Add(billDetail);
             }
+            
 
             Bill bill = new Bill
             {
-                Account = Session.Account,
-                Datetime = DateTime.Now,
+                Name = name,
+                Address = address,
+                Phone = phone,
                 BillDetails = billDetails,
-                Status = BillStatus.Tại_cửa_hàng,
+                Status = BillStatus.Unprocessed,
                 Total = decimal.Parse(txtSellTotal.Text)
             };
 
             if (billBUS.Add(bill))
             {
-                MessageBox.Show("Thanh toán thành công");
+                MessageBox.Show("Thành công");
                 lvSell.Items.Clear();
                 txtSellTotal.Text = "0";
             }
             else
             {
-                MessageBox.Show("Thanh toán thất bại");
+                MessageBox.Show("Thất bại");
             }
-        }
-
-        private void btnStorageSearch_Click(object sender, EventArgs e)
-        {
-            string searchString = txtStorageSearchString.Text;
-            string searchCatalog = cboStorageSearchCatalog.SelectedIndex > 0 ? (cboStorageSearchCatalog.SelectedItem as Catalog).ID : null;
-
-            List<Product> products = productBUS.Search(searchString, searchCatalog);
-
-            ShowStorages(products);
-        }
-
-        private void lvStorage_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (sorter.Order == SortOrder.Ascending)
-            {
-                sorter.Order = SortOrder.Descending;
-            }
-            else
-            {
-                sorter.Order = SortOrder.Ascending;
-            }
-            sorter.SortColumn = e.Column;
-            lvStorage.Sort();
         }
 
         private void btnBillSearch_Click(object sender, EventArgs e)
@@ -1311,6 +1056,115 @@ namespace GUI
 
             List<Bill> bills = billBUS.Search(searchString, fromDate, toDate, fromTotal, toTotal);
             ShowBills(bills);
+        }
+
+        private void lvBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvBill.SelectedItems.Count == 0)
+            {
+                lvBillDetail.Items.Clear();
+                return;
+            }
+
+            Bill bill = (lvBill.SelectedItems[0].Tag as Bill);
+            List<BillDetail> billDetails = billDetailBUS.GetBillDetails(bill.ID);
+            ShowBillDetails(billDetails);
+
+            txtBillName.Text = bill.Name;
+            txtBillAddress.Text = bill.Address;
+            txtBillPhone.Text = bill.Phone;
+
+            if (bill.Status == BillStatus.Unprocessed)
+            {
+                radBillUnprocessed.Checked = true;
+            }
+            else if (bill.Status == BillStatus.Processing)
+            {
+                radBillProccessing.Checked = true;
+            }
+            else if (bill.Status == BillStatus.Shipping)
+            {
+                radBillShipping.Checked = true;
+            }
+            else if (bill.Status == BillStatus.Done)
+            {
+                radBillDone.Checked = true;
+            }
+            else if (bill.Status == BillStatus.Cancel)
+            {
+                radBillCancel.Checked = true;
+            }
+        }
+
+        private void btnBillStatus_Click(object sender, EventArgs e)
+        {
+            if (lvBill.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một trường");
+                return;
+            }
+
+            string name = txtBillName.Text;
+            string address = txtBillAddress.Text;
+            string phone = txtBillPhone.Text;
+
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Vui lòng nhập tên");
+                return;
+            }
+
+            if (String.IsNullOrWhiteSpace(address))
+            {
+                MessageBox.Show("Vui lòng nhập địa chỉ");
+            }
+
+            if (!Regex.IsMatch(phone, @"^([\+]?33[-]?|[0])?[1-9][0-9]{8}$"))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ");
+                return;
+            }
+
+            int oldid = (lvBill.SelectedItems[0].Tag as Bill).ID;
+            BillStatus billStatus = BillStatus.Unprocessed;
+            if (radBillUnprocessed.Checked)
+            {
+                billStatus = BillStatus.Unprocessed;
+            }
+            else if (radBillProccessing.Checked)
+            {
+                billStatus = BillStatus.Processing;
+            }
+            else if (radBillShipping.Checked)
+            {
+                billStatus = BillStatus.Shipping;
+            }
+            else if (radBillDone.Checked)
+            {
+                billStatus = BillStatus.Done;
+            }
+            else if (radBillCancel.Checked)
+            {
+                billStatus = BillStatus.Cancel;
+            }
+
+            Bill bill = new Bill
+            {
+                Name = name,
+                Address = address,
+                Phone = phone,
+                Status = billStatus,
+            };
+
+            if (billBUS.Edit(oldid, bill))
+            {
+                MessageBox.Show("Thành công");
+                ShowAllBill();
+            }
+            else
+            {
+                MessageBox.Show("Thất bại");
+            }
         }
     }
 }

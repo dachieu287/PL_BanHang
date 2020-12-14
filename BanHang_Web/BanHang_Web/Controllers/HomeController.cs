@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BanHang_Web.Models.DB;
 
 namespace BanHang_Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly PL_BanHangContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(PL_BanHangContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -32,6 +33,12 @@ namespace BanHang_Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Test()
+        {
+            List<Product> products = _context.Products.ToList();
+            return Ok(products);
         }
     }
 }

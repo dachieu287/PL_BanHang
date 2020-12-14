@@ -12,7 +12,7 @@ namespace DTO
         public Bill Bill { get; set; }
         public Product Product { get; set; }
         public Combo Combo { get; set; }
-        public Price Price { get; set; }
+        public decimal Price { get; set; }
         public int Quantity { get; set; }
     }
 }

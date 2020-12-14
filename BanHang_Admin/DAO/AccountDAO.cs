@@ -6,37 +6,37 @@ namespace DAO
 {
     public class AccountDAO : DatabaseAccess
     {
-        public Account GetAccount(string email)
+        public Account GetAccount(string username)
         {
             Account account = null;
             string sql = 
-                @"select ID, Email, Password, Name, Gender, BirthDay, Phone, Address, JoinDate, Role, Active 
-                  from Account 
-                  where Email = @email";
+                @"
+select Username, Password, Name, Gender, BirthDay, Email, Phone, Address,  Role, Active
+from Account 
+where Username = @username";
             SqlCommand command = new SqlCommand
             {
                 CommandType = CommandType.Text,
                 CommandText = sql,
                 Connection = connection
             };
-            command.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
+            command.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
             SqlDataReader reader = command.ExecuteReader();
 
             if (reader.Read())
             {
                 account = new Account
                 {
-                    ID = reader.GetInt32(0),
-                    Email = reader.GetString(1),
-                    Password = reader.GetString(2),
-                    Name = reader.GetString(3),
-                    Gender = reader.GetBoolean(4),
-                    BirthDay = reader.GetDateTime(5),
+                    Username = reader.GetString(0),
+                    Password = reader.GetString(1),
+                    Name = reader.GetString(2),
+                    Gender = reader.GetBoolean(3),
+                    BirthDay = reader.GetDateTime(4),
+                    Email = reader.GetString(5),
                     Phone = reader.GetString(6),
                     Address = reader.GetString(7),
-                    JoinDate = reader.GetDateTime(8),
-                    Role = reader.GetString(9),
-                    Active = reader.GetBoolean(10)
+                    Role = reader.GetString(8),
+                    Active = reader.GetBoolean(9)
                 };
             }
             reader.Close();

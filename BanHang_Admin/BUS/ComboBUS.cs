@@ -40,5 +40,10 @@ namespace BUS
         {
             return dao.Search(searchString);
         }
+
+        public string GetName(string id)
+        {
+            return dao.GetName(id);
+        }
     }
 }

@@ -28,5 +28,10 @@ namespace BUS
         {
             return dao.Search(searchString, fromDate, toDate, fromTotal, toTotal);
         }
+
+        public bool Edit(int id, Bill bill)
+        {
+            return dao.Edit(id, bill);
+        }
     }
 }

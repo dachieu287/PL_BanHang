@@ -9,7 +9,9 @@ namespace DTO
     public class Bill
     {
         public int ID { get; set; }
-        public Account Account { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         public DateTime Datetime { get; set; }
         public decimal Total { get; set; }
         public BillStatus Status { get; set; }
@@ -18,6 +20,10 @@ namespace DTO
 
     public enum BillStatus
     {
-        Tại_cửa_hàng = 0,
+        Unprocessed = 1,
+        Processing = 2,
+        Shipping = 3,
+        Done = 4,
+        Cancel = 5
     }
 }

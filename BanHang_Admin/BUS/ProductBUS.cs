@@ -42,5 +42,10 @@ namespace BUS
         {
             return dao.ChangeQuantity(id, quantity, isImport);
         }
+
+        public string GetName(string id)
+        {
+            return dao.GetName(id);
+        }
     }
 }

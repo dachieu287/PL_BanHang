@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BanHang_Web.Models.DB;
+using Microsoft.EntityFrameworkCore;
 
 namespace BanHang_Web
 {
@@ -24,6 +26,8 @@ namespace BanHang_Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<PL_BanHangContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PL_BanHang")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

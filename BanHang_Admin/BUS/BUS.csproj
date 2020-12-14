@@ -47,7 +47,6 @@
     <Compile Include="CatalogBUS.cs" />
     <Compile Include="ComboBUS.cs" />
     <Compile Include="ComboDetailBUS.cs" />
-    <Compile Include="PriceBUS.cs" />
     <Compile Include="ProductBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />

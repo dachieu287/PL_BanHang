@@ -13,12 +13,13 @@ namespace BanHang_Web.Models.DB
         }
 
         public int Id { get; set; }
-        public string AccountEmail { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         public DateTime Datetime { get; set; }
         public decimal Total { get; set; }
         public int Status { get; set; }
 
-        public virtual Account AccountEmailNavigation { get; set; }
         public virtual ICollection<BillDetail> BillDetails { get; set; }
     }
 }

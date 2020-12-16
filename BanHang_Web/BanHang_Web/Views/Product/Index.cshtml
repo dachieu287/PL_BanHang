@@ -1,0 +1,68 @@
+﻿@model BanHang_Web.Models.ViewModel.ProductViewModel;
+@section Styles {
+    <link href="~/lib/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
+    <link href="~/lib/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/lib/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" />
+    <link href="~/css/product_styles.css" rel="stylesheet" />
+    <link href="~/css/product_responsive.css" rel="stylesheet" />
+}
+
+<!-- Single Product -->
+
+<div class="single_product">
+    <div class="container">
+        <div class="row">
+
+            <!-- Images -->
+
+            <!-- Selected Image -->
+            <div class="col-lg-5 order-lg-2 order-1">
+                <div class="image_selected">
+                    @{ 
+                        string imageBase64 = Convert.ToBase64String(Model.Image);
+                        string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                    }
+                    <img src="@imageSrc" />
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="col-lg-5 order-3">
+                <div class="product_description">
+                    <div class="product_category">@Model.Catalog</div>
+                    <div class="product_name">@Model.Name</div>
+                    <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="product_text"><p>@Model.Description</p></div>
+                    <div class="order_info d-flex flex-row">
+                        <form action="#">
+                            <div class="clearfix" style="z-index: 1000;">
+
+                                <!-- Product Quantity -->
+                                <div class="product_quantity clearfix">
+                                    <span>Quantity: </span>
+                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <div class="quantity_buttons">
+                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="product_price">@String.Format("{0:c0}", Model.Price)</div><span style="text-decoration:line-through">@String.Format("{0:c0}", Model.IsProduct ? "" : Model.PrevPrice)</span>
+                            <div class="button_container">
+                                <button type="button" class="button cart_button">Thêm vào giỏ hàng</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/product_custom.js"></script>
+}

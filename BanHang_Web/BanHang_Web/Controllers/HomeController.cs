@@ -1,12 +1,14 @@
-﻿using BanHang_Web.Models;
+﻿using BanHang_Web.Models.DB;
+using BanHang_Web.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using BanHang_Web.Models.DB;
+//using BanHang_Web.Models.DB;
 
 namespace BanHang_Web.Controllers
 {
@@ -19,26 +21,21 @@ namespace BanHang_Web.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            IndexViewModel model = new IndexViewModel
+            {
+                Catalogs = await _context.Catalogs
+                    .Include(i => i.Products)
+                    .ToListAsync(),
+                Combos = await _context.Combos.ToListAsync(),
+            };
+            return View(model);
         }
 
         public IActionResult Test()
         {
-            List<Product> products = _context.Products.ToList();
-            return Ok(products);
+            return Ok(_context.Products.ToList());
         }
     }
 }

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CartViewModel>
+@{
+    ViewData["Title"] = "Cart";
+    decimal total = 0;
+}
+
+@section Styles {
+    <link href="~/css/cart_styles.css" rel="stylesheet" />
+    <link href="~/css/cart_responsive.css" rel="stylesheet" />
+}
+
+<div class="cart_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cart_container">
+                    <div class="cart_title">Giỏ hàng</div>
+                    <div class="cart_items">
+                        <ul class="cart_list">
+                            @foreach (CartViewModel item in Model)
+                            {
+                                string imageBase64 = Convert.ToBase64String(item.Image);
+                                string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img src="@imageSrc" /></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Tên</div>
+                                            <div class="cart_item_text">@item.Name</div>
+                                        </div>
+                                        <div class="cart_item_quantity cart_info_col">
+                                            <div class="cart_item_title">Số lượng</div>
+                                            <div class="cart_item_text">@item.Quantity</div>
+                                        </div>
+                                        <div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Giá</div>
+                                            <div class="cart_item_text">@String.Format("{0:c0}", item.Price)</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title">Thành tiền</div>
+                                            <div class="cart_item_text">@String.Format("{0:c0}", item.Price * item.Quantity)</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title"></div>
+                                            <div class="cart_item_text"><a class="btn" asp-action="Remove" asp-route-id="@item.Id" asp-route-isProduct="@item.IsProduct">X</a></div>
+                                        </div>
+                                        
+                                    </div>
+                                </li>
+                                total += item.Price * item.Quantity;
+                            }
+
+
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Order Total -->
+                    <div class="order_total">
+                        <div class="order_total_content text-md-right">
+                            <div class="order_total_title">Tổng cộng:</div>
+                            <div class="order_total_amount">@String.Format("{0:c0}", total)</div>
+                        </div>
+                    </div>
+
+                    <div class="cart_buttons">
+                        <a class="button cart_button_clear" asp-action="RemoveAll">Xóa hết</a>
+                        <button type="button" class="button cart_button_checkout">Đặt hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/cart_custom.js"></script>
+}

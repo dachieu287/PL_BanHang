@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BanHang_Web.Extensions;
 //using BanHang_Web.Models.DB;
 
 namespace BanHang_Web.Controllers
@@ -33,9 +34,9 @@ namespace BanHang_Web.Controllers
             return View(model);
         }
 
-        public IActionResult Test()
+        public IActionResult GetPartialCatagory()
         {
-            return Ok(_context.Products.ToList());
+            return PartialView("_Category");
         }
     }
 }

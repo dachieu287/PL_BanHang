@@ -19,6 +19,11 @@ namespace BanHang_Web.Controllers
         }
         public IActionResult Index(string type, string id)
         {
+            if (String.IsNullOrEmpty(type) || String.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
             ProductViewModel model = new ProductViewModel();
             if (type.Equals("product"))
             {

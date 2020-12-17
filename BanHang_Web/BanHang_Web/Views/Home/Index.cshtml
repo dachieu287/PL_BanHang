@@ -15,7 +15,8 @@
 
 <div class="banner">
     <div class="banner_background">
-<img src="~/image/banner_background.jpg" /></div>
+        <img src="~/image/banner_background.jpg" />
+    </div>
     <div class="container fill_height">
         <div class="row fill_height">
             <div class="banner_product_image">
@@ -82,7 +83,7 @@
                                                         <div class="product_price">@String.Format("{0:c0}", product.Price)</div>
                                                         <div class="product_name"><div><a asp-controller="Product" asp-route-type="product" asp-route-id="@product.Id">@product.Name</a></div></div>
                                                         <div class="product_extras">
-                                                            <button class="product_cart_button">Thêm vào giỏ hàng</button>
+                                                            <button class="product_cart_button" cid="@product.Id">Thêm vào giỏ hàng</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,10 +93,10 @@
                                     </div>
                                     <div class="arrivals_slider_dots_cover"></div>
                                 </div>
-                             }
+                            }
                         </div>
 
-                        
+
 
                     </div>
 
@@ -131,18 +132,18 @@
                             {
                                 string imageBase64 = Convert.ToBase64String(combo.Image);
                                 string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
-                            <div class="bestsellers_item discount">
-                                <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-                                    <div class="bestsellers_image"><img src="@imageSrc"></div>
-                                    <div class="bestsellers_content">
-                                        <div class="bestsellers_name"><a asp-controller="Product" asp-route-type="combo" asp-route-id="@combo.Id">@combo.Name</a></div>
-                                        <div class="bestsellers_price discount">@String.Format("{0:c0}", combo.Price)<span>@String.Format("{0:c0}", combo.PrevPrice)</span></div>
+                                <div class="bestsellers_item discount">
+                                    <div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
+                                        <div class="bestsellers_image"><img src="@imageSrc"></div>
+                                        <div class="bestsellers_content">
+                                            <div class="bestsellers_name"><a asp-controller="Product" asp-route-type="combo" asp-route-id="@combo.Id">@combo.Name</a></div>
+                                            <div class="bestsellers_price discount">@String.Format("{0:c0}", combo.Price)<span>@String.Format("{0:c0}", combo.PrevPrice)</span></div>
+                                        </div>
                                     </div>
+                                    <ul class="bestsellers_marks">
+                                        <li class="bestsellers_mark bestsellers_discount">@String.Format("-{0}%", combo.Discount)</li>
+                                    </ul>
                                 </div>
-                                <ul class="bestsellers_marks">
-                                    <li class="bestsellers_mark bestsellers_discount">@String.Format("-{0}%", combo.Discount)</li>
-                                </ul>
-                            </div>
                             }
                         </div>
                     </div>
@@ -156,4 +157,5 @@
 @section Scripts {
     <script src="~/lib/slick-1.8.0/slick.js"></script>
     <script src="~/js/custom.js"></script>
+    <script src="~/js/home.js"></script>
 }

@@ -1,71 +1,189 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿#loginform {
+    width: 500px;
+    height: auto;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: 100px;
+    background-color: #585858;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px #424242;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: helvetica;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    z-index: 100;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
+    #loginform #close_login {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
+    #loginform p {
+        margin-top: 40px;
+        font-size: 22px;
+        color: #E6E6E6;
+    }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
+    #loginform #username {
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+    #loginform #password {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
+    #loginform #dologin {
+        margin-left: -5px;
+        margin-top: 10px;
+        width: 250px;
+        height: 40px;
+        border: none;
+        border-radius: 3px;
+        color: #E6E6E6;
+        background-color: grey;
+        font-size: 20px;
+    }
+    
+    #loginform #toRegister {
+        margin-left: -5px;
+        margin-top: 10px;
+        width: 250px;
+        height: 40px;
+        border: none;
+        border-radius: 3px;
+        color: #E6E6E6;
+        background-color: grey;
+        font-size: 20px;
+    }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+#registerform {
+    width: 500px;
+    height: auto;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: 100px;
+    background-color: #585858;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px #424242;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: helvetica;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    z-index: 100;
 }
+    #registerform #close_register {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
+    #registerform p {
+        margin-top: 40px;
+        font-size: 22px;
+        color: #E6E6E6;
+    }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
+    #registerform #username {
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
+    #registerform #password {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    #registerform #name {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    #registerform #gender {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        padding: 5px;
+    }
+
+    #registerform #email {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    #registerform #phone {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    #registerform #address {
+        margin-top: 5px;
+        width: 250px;
+        height: 40px;
+        border: 2px solid silver;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    #registerform #doregister {
+        margin-left: -5px;
+        margin-top: 10px;
+        width: 250px;
+        height: 40px;
+        border: none;
+        border-radius: 3px;
+        color: #E6E6E6;
+        background-color: grey;
+        font-size: 20px;
+    }
+
+    #registerform #toLogin {
+        margin-left: -5px;
+        margin-top: 10px;
+        width: 250px;
+        height: 40px;
+        border: none;
+        border-radius: 3px;
+        color: #E6E6E6;
+        background-color: grey;
+        font-size: 20px;
+    }

@@ -131,8 +131,15 @@ namespace BanHang_Web.Controllers
             List<CartViewModel> carts = HttpContext.Session.Get<List<CartViewModel>>("Cart");
             int index = carts.FindIndex(m => m.IsProduct == isProduct && m.Id.Equals(id));
             carts.RemoveAt(index);
-            HttpContext.Session.Set("Cart", carts);
-
+            if (carts.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.Set("Cart", carts);
+            }
+           
             return RedirectToAction("Index");
         }
 
@@ -140,6 +147,52 @@ namespace BanHang_Web.Controllers
         {
             HttpContext.Session.Remove("Cart");
             return RedirectToAction("Index", "Home");
+        }
+
+        public string Checkout()
+        {
+            List<CartViewModel> carts = HttpContext.Session.Get<List<CartViewModel>>("Cart");
+            if (carts == default)
+            {
+                return "nothing";
+            }
+
+            Account account = HttpContext.Session.Get<Account>("Account");
+            if (account == default)
+            {
+                return "nologin";
+            }
+
+            List<BillDetail> billDetails = new List<BillDetail>();
+            decimal total = 0;
+            foreach (CartViewModel cart in carts)
+            {
+                BillDetail billDetail = new BillDetail
+                {
+                    ProductId = cart.IsProduct ? cart.Id : null,
+                    ComboId = cart.IsProduct ? null : cart.Id,
+                    Price = cart.Price,
+                    Quantity = cart.Quantity,
+                };
+                total += cart.Price * cart.Quantity;
+                billDetails.Add(billDetail);
+            }
+
+            Bill bill = new Bill
+            {
+                Name = account.Name,
+                Address = account.Address,
+                Phone = account.Phone,
+                Datetime = DateTime.Now,
+                Status = 1,
+                Total  = total,
+                BillDetails = billDetails,
+            };
+            _context.Bills.Add(bill);
+            _context.SaveChanges();
+            HttpContext.Session.Remove("Cart");
+
+            return "success";  
         }
     }
 }

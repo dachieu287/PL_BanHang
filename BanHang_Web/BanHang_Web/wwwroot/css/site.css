@@ -12,7 +12,7 @@
     font-family: helvetica;
     visibility: hidden;
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 100;
 }
 
@@ -86,7 +86,7 @@
     font-family: helvetica;
     visibility: hidden;
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 100;
 }
     #registerform #close_register {

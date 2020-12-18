@@ -55,7 +55,7 @@
 
 
 
-   /* $('#register').submit(function () {
+    $('#register').submit(function (e) {
         var username = $('#registerform input[name=username]').val();
         var password = $('#registerform input[name=password]').val();
         var name = $('#registerform input[name=name]').val();
@@ -63,6 +63,7 @@
         var email = $('#registerform input[name=email]').val();
         var phone = $('#registerform input[name=phone]').val();
         var address = $('#registerform input[name=address]').val();
+        e.preventDefault();
 
         $.ajax({
             url: '/Account/Register',
@@ -77,10 +78,58 @@
                 address
             },
             success: function (result) {
-                if (result === "UsernameExist") {
-                    alert("Tên người dùng đã tồn tại");
+                if (result === 'UsernameExist') {
+                    alert('tên tài khoản đã tồn tại');
+                }
+                else if (result === 'Success') {
+                    alert("Đăng ký thành công");
+                    window.location.reload();
+                }
+            } 
+        });
+    });
+
+    $('#login').submit(function (e) {
+        e.preventDefault();
+        var username = $('#loginform  input[name=username]').val();
+        var password = $('#loginform input[name=password]').val();
+
+        $.ajax({
+            url: '/Account/Login',
+            method: 'post',
+            data: {
+                username,
+                password,
+            },
+            success: function (result) {
+                if (result) {
+                    window.location.reload();
+                }
+                else {
+                    alert('Thông tin đăng nhập không đúng');
                 }
             }
         });
-    });*/
+    });
+
+    $('.cart_button_checkout').click(function () {
+        $.ajax({
+            url: '/Cart/Checkout',
+            method: 'post',
+            success: function (result) {
+                if (result === 'nothing') {
+                    alert('Giỏ hàng trống')
+                }
+                else if (result === 'nologin') {
+                    alert('Đăng nhập để đặt hàng');
+                    showLogin();
+                    $('.super_container').fadeTo('slow', 0.2);
+                }
+                else {
+                    alert('Đặt hàng thành công');
+                    window.location.replace('Home/Index');
+                }
+            }
+        });
+    });
 });

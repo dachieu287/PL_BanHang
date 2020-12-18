@@ -34,6 +34,7 @@ namespace GUI
             lvCatalog.ListViewItemSorter = sorter;
             lvCombo.ListViewItemSorter = sorter;
             lvProduct.ListViewItemSorter = sorter;
+            lvBill.ListViewItemSorter = sorter;
             
             accountBUS = new AccountBUS();
             billBUS = new BillBUS();
@@ -1165,6 +1166,20 @@ namespace GUI
             {
                 MessageBox.Show("Thất bại");
             }
+        }
+
+        private void lvBill_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (sorter.Order == SortOrder.Ascending)
+            {
+                sorter.Order = SortOrder.Descending;
+            }
+            else
+            {
+                sorter.Order = SortOrder.Ascending;
+            }
+            sorter.SortColumn = e.Column;
+            lvBill.Sort();
         }
     }
 }

@@ -18,11 +18,12 @@ namespace BanHang_Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(string username, string password, string name, bool gender, string email, string phone, string address)
+        public string Register(string username, string password, string name, bool gender, string email, string phone, string address)
         {
             if (_context.Accounts.Any(m => m.Username.Equals(username)))
             {
-                return View("UsernameExist");
+                return "UsernameExist";
+                //return View("UsernameExist");
             }
 
             Account account = new Account
@@ -43,7 +44,26 @@ namespace BanHang_Web.Controllers
 
             HttpContext.Session.Set("Account", account);
 
-            return View("Success");
+            return "Success";
+            //return View("Success");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("Account");
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public bool Login(string username, string password)
+        {
+            Account account = _context.Accounts.FirstOrDefault(a => a.Username.Equals(username) && a.Password.Equals(password));
+            if (account == null)
+            {
+                return false;
+            }
+            HttpContext.Session.Set("Account", account);
+            return true;
         }
     }
 }

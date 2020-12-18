@@ -47,6 +47,12 @@ namespace GUI
             this.radSellProduct = new System.Windows.Forms.RadioButton();
             this.radSellCombo = new System.Windows.Forms.RadioButton();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.txtSellPhone = new System.Windows.Forms.TextBox();
+            this.txtSellAddress = new System.Windows.Forms.TextBox();
+            this.txtSellName = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnSellPay = new System.Windows.Forms.Button();
             this.txtSellTotal = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -148,6 +154,19 @@ namespace GUI
             this.clhdCatalogName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpBill = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtBillName = new System.Windows.Forms.TextBox();
+            this.txtBillAddress = new System.Windows.Forms.TextBox();
+            this.txtBillPhone = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnBillStatus = new System.Windows.Forms.Button();
+            this.radBillCancel = new System.Windows.Forms.RadioButton();
+            this.radBillDone = new System.Windows.Forms.RadioButton();
+            this.radBillShipping = new System.Windows.Forms.RadioButton();
+            this.radBillProccessing = new System.Windows.Forms.RadioButton();
+            this.radBillUnprocessed = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.lvBillDetail = new System.Windows.Forms.ListView();
             this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -172,25 +191,6 @@ namespace GUI
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ofdProductImage = new System.Windows.Forms.OpenFileDialog();
             this.ofdComboImage = new System.Windows.Forms.OpenFileDialog();
-            this.label13 = new System.Windows.Forms.Label();
-            this.radBillUnprocessed = new System.Windows.Forms.RadioButton();
-            this.radBillProccessing = new System.Windows.Forms.RadioButton();
-            this.radBillShipping = new System.Windows.Forms.RadioButton();
-            this.radBillDone = new System.Windows.Forms.RadioButton();
-            this.radBillCancel = new System.Windows.Forms.RadioButton();
-            this.btnBillStatus = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtSellName = new System.Windows.Forms.TextBox();
-            this.txtSellAddress = new System.Windows.Forms.TextBox();
-            this.txtSellPhone = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtBillPhone = new System.Windows.Forms.TextBox();
-            this.txtBillAddress = new System.Windows.Forms.TextBox();
-            this.txtBillName = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tpSell.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -383,6 +383,54 @@ namespace GUI
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(516, 418);
             this.panel17.TabIndex = 0;
+            // 
+            // txtSellPhone
+            // 
+            this.txtSellPhone.Location = new System.Drawing.Point(123, 303);
+            this.txtSellPhone.Name = "txtSellPhone";
+            this.txtSellPhone.Size = new System.Drawing.Size(272, 20);
+            this.txtSellPhone.TabIndex = 7;
+            // 
+            // txtSellAddress
+            // 
+            this.txtSellAddress.Location = new System.Drawing.Point(123, 277);
+            this.txtSellAddress.Name = "txtSellAddress";
+            this.txtSellAddress.Size = new System.Drawing.Size(272, 20);
+            this.txtSellAddress.TabIndex = 7;
+            // 
+            // txtSellName
+            // 
+            this.txtSellName.Location = new System.Drawing.Point(123, 251);
+            this.txtSellName.Name = "txtSellName";
+            this.txtSellName.Size = new System.Drawing.Size(272, 20);
+            this.txtSellName.TabIndex = 7;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(44, 306);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 13);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Số điện thoại:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(74, 280);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 13);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Địa chỉ:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(88, 254);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Tên:";
             // 
             // btnSellPay
             // 
@@ -1393,6 +1441,128 @@ namespace GUI
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Danh sách:";
             // 
+            // txtBillName
+            // 
+            this.txtBillName.Location = new System.Drawing.Point(105, 216);
+            this.txtBillName.Name = "txtBillName";
+            this.txtBillName.Size = new System.Drawing.Size(217, 20);
+            this.txtBillName.TabIndex = 7;
+            // 
+            // txtBillAddress
+            // 
+            this.txtBillAddress.Location = new System.Drawing.Point(105, 242);
+            this.txtBillAddress.Name = "txtBillAddress";
+            this.txtBillAddress.Size = new System.Drawing.Size(217, 20);
+            this.txtBillAddress.TabIndex = 7;
+            // 
+            // txtBillPhone
+            // 
+            this.txtBillPhone.Location = new System.Drawing.Point(105, 268);
+            this.txtBillPhone.Name = "txtBillPhone";
+            this.txtBillPhone.Size = new System.Drawing.Size(217, 20);
+            this.txtBillPhone.TabIndex = 7;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(28, 271);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(73, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Số điện thoại:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(58, 245);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(43, 13);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "Địa chỉ:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(72, 219);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Tên:";
+            // 
+            // btnBillStatus
+            // 
+            this.btnBillStatus.Location = new System.Drawing.Point(247, 332);
+            this.btnBillStatus.Name = "btnBillStatus";
+            this.btnBillStatus.Size = new System.Drawing.Size(75, 51);
+            this.btnBillStatus.TabIndex = 3;
+            this.btnBillStatus.Text = "Lưu";
+            this.btnBillStatus.UseVisualStyleBackColor = true;
+            this.btnBillStatus.Click += new System.EventHandler(this.btnBillStatus_Click);
+            // 
+            // radBillCancel
+            // 
+            this.radBillCancel.AutoSize = true;
+            this.radBillCancel.Location = new System.Drawing.Point(105, 401);
+            this.radBillCancel.Name = "radBillCancel";
+            this.radBillCancel.Size = new System.Drawing.Size(59, 17);
+            this.radBillCancel.TabIndex = 2;
+            this.radBillCancel.TabStop = true;
+            this.radBillCancel.Text = "Đã hủy";
+            this.radBillCancel.UseVisualStyleBackColor = true;
+            // 
+            // radBillDone
+            // 
+            this.radBillDone.AutoSize = true;
+            this.radBillDone.Location = new System.Drawing.Point(105, 378);
+            this.radBillDone.Name = "radBillDone";
+            this.radBillDone.Size = new System.Drawing.Size(62, 17);
+            this.radBillDone.TabIndex = 2;
+            this.radBillDone.TabStop = true;
+            this.radBillDone.Text = "Đã giao";
+            this.radBillDone.UseVisualStyleBackColor = true;
+            // 
+            // radBillShipping
+            // 
+            this.radBillShipping.AutoSize = true;
+            this.radBillShipping.Location = new System.Drawing.Point(105, 355);
+            this.radBillShipping.Name = "radBillShipping";
+            this.radBillShipping.Size = new System.Drawing.Size(74, 17);
+            this.radBillShipping.TabIndex = 2;
+            this.radBillShipping.TabStop = true;
+            this.radBillShipping.Text = "Đang giao";
+            this.radBillShipping.UseVisualStyleBackColor = true;
+            // 
+            // radBillProccessing
+            // 
+            this.radBillProccessing.AutoSize = true;
+            this.radBillProccessing.Location = new System.Drawing.Point(105, 332);
+            this.radBillProccessing.Name = "radBillProccessing";
+            this.radBillProccessing.Size = new System.Drawing.Size(75, 17);
+            this.radBillProccessing.TabIndex = 2;
+            this.radBillProccessing.TabStop = true;
+            this.radBillProccessing.Text = "Đang xử lý";
+            this.radBillProccessing.UseVisualStyleBackColor = true;
+            // 
+            // radBillUnprocessed
+            // 
+            this.radBillUnprocessed.AutoSize = true;
+            this.radBillUnprocessed.Location = new System.Drawing.Point(105, 309);
+            this.radBillUnprocessed.Name = "radBillUnprocessed";
+            this.radBillUnprocessed.Size = new System.Drawing.Size(74, 17);
+            this.radBillUnprocessed.TabIndex = 2;
+            this.radBillUnprocessed.TabStop = true;
+            this.radBillUnprocessed.Text = "Chưa xử lý";
+            this.radBillUnprocessed.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 351);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Trạng thái:";
+            // 
             // lvBillDetail
             // 
             this.lvBillDetail.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1598,6 +1768,7 @@ namespace GUI
             this.lvBill.TabIndex = 0;
             this.lvBill.UseCompatibleStateImageBehavior = false;
             this.lvBill.View = System.Windows.Forms.View.Details;
+            this.lvBill.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvBill_ColumnClick);
             this.lvBill.SelectedIndexChanged += new System.EventHandler(this.lvBill_SelectedIndexChanged);
             // 
             // columnHeader25
@@ -1628,176 +1799,6 @@ namespace GUI
             // ofdComboImage
             // 
             this.ofdComboImage.Filter = "Image|*.jpg;*.jpeg;*.png";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 351);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Trạng thái:";
-            // 
-            // radBillUnprocessed
-            // 
-            this.radBillUnprocessed.AutoSize = true;
-            this.radBillUnprocessed.Location = new System.Drawing.Point(105, 309);
-            this.radBillUnprocessed.Name = "radBillUnprocessed";
-            this.radBillUnprocessed.Size = new System.Drawing.Size(74, 17);
-            this.radBillUnprocessed.TabIndex = 2;
-            this.radBillUnprocessed.TabStop = true;
-            this.radBillUnprocessed.Text = "Chưa xử lý";
-            this.radBillUnprocessed.UseVisualStyleBackColor = true;
-            // 
-            // radBillProccessing
-            // 
-            this.radBillProccessing.AutoSize = true;
-            this.radBillProccessing.Location = new System.Drawing.Point(105, 332);
-            this.radBillProccessing.Name = "radBillProccessing";
-            this.radBillProccessing.Size = new System.Drawing.Size(75, 17);
-            this.radBillProccessing.TabIndex = 2;
-            this.radBillProccessing.TabStop = true;
-            this.radBillProccessing.Text = "Đang xử lý";
-            this.radBillProccessing.UseVisualStyleBackColor = true;
-            // 
-            // radBillShipping
-            // 
-            this.radBillShipping.AutoSize = true;
-            this.radBillShipping.Location = new System.Drawing.Point(105, 355);
-            this.radBillShipping.Name = "radBillShipping";
-            this.radBillShipping.Size = new System.Drawing.Size(74, 17);
-            this.radBillShipping.TabIndex = 2;
-            this.radBillShipping.TabStop = true;
-            this.radBillShipping.Text = "Đang giao";
-            this.radBillShipping.UseVisualStyleBackColor = true;
-            // 
-            // radBillDone
-            // 
-            this.radBillDone.AutoSize = true;
-            this.radBillDone.Location = new System.Drawing.Point(105, 378);
-            this.radBillDone.Name = "radBillDone";
-            this.radBillDone.Size = new System.Drawing.Size(62, 17);
-            this.radBillDone.TabIndex = 2;
-            this.radBillDone.TabStop = true;
-            this.radBillDone.Text = "Đã giao";
-            this.radBillDone.UseVisualStyleBackColor = true;
-            // 
-            // radBillCancel
-            // 
-            this.radBillCancel.AutoSize = true;
-            this.radBillCancel.Location = new System.Drawing.Point(105, 401);
-            this.radBillCancel.Name = "radBillCancel";
-            this.radBillCancel.Size = new System.Drawing.Size(59, 17);
-            this.radBillCancel.TabIndex = 2;
-            this.radBillCancel.TabStop = true;
-            this.radBillCancel.Text = "Đã hủy";
-            this.radBillCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnBillStatus
-            // 
-            this.btnBillStatus.Location = new System.Drawing.Point(247, 332);
-            this.btnBillStatus.Name = "btnBillStatus";
-            this.btnBillStatus.Size = new System.Drawing.Size(75, 51);
-            this.btnBillStatus.TabIndex = 3;
-            this.btnBillStatus.Text = "Lưu";
-            this.btnBillStatus.UseVisualStyleBackColor = true;
-            this.btnBillStatus.Click += new System.EventHandler(this.btnBillStatus_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(88, 254);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 13);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Tên:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(74, 280);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 13);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "Địa chỉ:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(44, 306);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(73, 13);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Số điện thoại:";
-            // 
-            // txtSellName
-            // 
-            this.txtSellName.Location = new System.Drawing.Point(123, 251);
-            this.txtSellName.Name = "txtSellName";
-            this.txtSellName.Size = new System.Drawing.Size(272, 20);
-            this.txtSellName.TabIndex = 7;
-            // 
-            // txtSellAddress
-            // 
-            this.txtSellAddress.Location = new System.Drawing.Point(123, 277);
-            this.txtSellAddress.Name = "txtSellAddress";
-            this.txtSellAddress.Size = new System.Drawing.Size(272, 20);
-            this.txtSellAddress.TabIndex = 7;
-            // 
-            // txtSellPhone
-            // 
-            this.txtSellPhone.Location = new System.Drawing.Point(123, 303);
-            this.txtSellPhone.Name = "txtSellPhone";
-            this.txtSellPhone.Size = new System.Drawing.Size(272, 20);
-            this.txtSellPhone.TabIndex = 7;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(72, 219);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 13);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Tên:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(58, 245);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(43, 13);
-            this.label20.TabIndex = 5;
-            this.label20.Text = "Địa chỉ:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(28, 271);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(73, 13);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "Số điện thoại:";
-            // 
-            // txtBillPhone
-            // 
-            this.txtBillPhone.Location = new System.Drawing.Point(105, 268);
-            this.txtBillPhone.Name = "txtBillPhone";
-            this.txtBillPhone.Size = new System.Drawing.Size(217, 20);
-            this.txtBillPhone.TabIndex = 7;
-            // 
-            // txtBillAddress
-            // 
-            this.txtBillAddress.Location = new System.Drawing.Point(105, 242);
-            this.txtBillAddress.Name = "txtBillAddress";
-            this.txtBillAddress.Size = new System.Drawing.Size(217, 20);
-            this.txtBillAddress.TabIndex = 7;
-            // 
-            // txtBillName
-            // 
-            this.txtBillName.Location = new System.Drawing.Point(105, 216);
-            this.txtBillName.Name = "txtBillName";
-            this.txtBillName.Size = new System.Drawing.Size(217, 20);
-            this.txtBillName.TabIndex = 7;
             // 
             // Manage
             // 
